@@ -14,7 +14,7 @@ import TrackEdit from './Pages/TrackEdit'
 import TrackUpload from './Pages/TrackEdit'
 import Trip from './Pages/Trip'
 import TripEdit from './Pages/TripEdit'
-import Type from './Pages/Type'
+// import Type from './Pages/Type'
 
 import Nav from './Components/Nav'
 
@@ -29,7 +29,7 @@ function AppRouter() {
       <Home path="/" />
       <SignUp path="signup" />
       <Login path='login' />
-      <Type path='/type/:type' />
+      <Home path='/type/:type' />
       <Trip path='/type/:type/trip/:trip' />
       <TripEdit path='/type/:type/trip/:trip/edit' />
       <Track path='/type/:type/trip/:trip/track/:track' />

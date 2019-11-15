@@ -8,6 +8,11 @@ function MapReducer(state, action) {
     case "getTypes": {
       return {...state, types: action.payload}
     }
+    case "setType": {
+      // return {...state, types: action.payload}
+      console.log(action.payload)
+      return state
+    }
     case "getTrips": {
       return {...state, trips: action.payload}
     }
