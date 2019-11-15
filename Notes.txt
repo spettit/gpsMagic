@@ -1,0 +1,10 @@
+initialized project from npx create-react-app
+
+firebase cli init (had to logout and log back in)
+
+linked to firestore, hosting and storage
+
+added VS code extension to format .rules files
+
+added @reach/router
+
