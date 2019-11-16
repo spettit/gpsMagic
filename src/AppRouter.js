@@ -1,42 +1,53 @@
-import React, {useReducer, useEffect } from 'react';
-import { Router, Link } from '@reach/router'
+import React, { useReducer, useEffect } from "react";
+import { Router, Link } from "@reach/router";
+import firebase from "firebase/app";
+import 'firebase/auth'
 
-import MapContext from './MapContext'
-import MapReducer from './MapReducer';
-import {getAllTrips} from "./firestore/firestore"
-import './App.css';
+import MapContext from "./MapContext";
+import MapReducer from "./MapReducer";
+import { getAllTrips } from "./firestore/firestore";
+import "./App.css";
 
-import Home from './Pages/Home'
-import Login from './Pages/LogIn'
-import SignUp from './Pages/SignUp'
-import Track from './Pages/Track'
-import TrackEdit from './Pages/TrackEdit'
-import TrackUpload from './Pages/TrackUpload/index'
-import Trip from './Pages/Trip'
-import TripEdit from './Pages/TripEdit'
+import Home from "./Pages/Home";
+import Login from "./Pages/LogIn";
+import SignUp from "./Pages/SignUp";
+import Track from "./Pages/Track";
+import TrackEdit from "./Pages/TrackEdit";
+import TrackUpload from "./Pages/TrackUpload/index";
+import Trip from "./Pages/Trip";
+import TripEdit from "./Pages/TripEdit";
 // import Type from './Pages/Type'
 
-import Nav from './Components/Nav'
+import Nav from "./Components/Nav";
 
 function AppRouter() {
-  const [state, dispatch] = useReducer(MapReducer, { trips: [], types: [], newTrip: {}, uploadPoints: [] });
+  const [state, dispatch] = useReducer(MapReducer, {
+    trips: [],
+    types: [],
+    newTrip: {},
+    uploadPoints: []
+  });
   useEffect(() => getAllTrips(dispatch), []);
 
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(() => dispatch({type: 'authstatechanged'}))
+}, [])
+
   return (
-    <MapContext.Provider value={{ state, dispatch }}>
-    <Nav />
-    <Router>
-      <Home path="/" />
-      <SignUp path="signup" />
-      <Login path='login' />
-      <Home path='/type/:type' />
-      <Trip path='/type/:type/trip/:trip' />
-      <TripEdit path='/type/:type/trip/:trip/edit' />
-      <Track path='/type/:type/trip/:trip/track/:track' />
-      <TrackEdit path='/type/:type/trip/:trip/track/:track/edit' />
-      <TrackUpload path='upload' />
-    </Router>
-    </MapContext.Provider>
+      <MapContext.Provider value={{ state, dispatch }}>
+        <Nav />{}
+        <Router>
+          <Home path="/" />
+          <SignUp path="signup" />
+          <Login path="login" />
+          <Home path="/type/:type" />
+          <Trip path="/type/:type/trip/:trip" />
+          <TripEdit path="/type/:type/trip/:trip/edit" />
+          <Track path="/type/:type/trip/:trip/track/:track" />
+          <TrackEdit path="/type/:type/trip/:trip/track/:track/edit" />
+          <TrackUpload path="upload" />
+        </Router>
+      </MapContext.Provider>
   );
 }
 

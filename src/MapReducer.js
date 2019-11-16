@@ -19,6 +19,10 @@ function MapReducer(state, action) {
     case "setPoints": {
       return { ...state, uploadPoints: action.payload };
     }
+    case "authstatechanged": {
+      console.log('authstatechanged')
+      return state
+    }
     // case "field": {
     //   return {...state, newTrip: {...state.newTrip, [action.fieldName]: action.payload}}
     // }

@@ -15,7 +15,7 @@ console.log(process.env.projectId)
 // import 'firebase/storage'
 
 var config = {
-    apiKey: process.env.apiKey,
+    apiKey: "AIzaSyAK5HPlq6JxUwX3bJOnZy0rlH0iScbyOMU",
     authDomain: process.env.authDomain,
     databaseURL: process.env.databaseURL,
     projectId: "gpxmagic",
