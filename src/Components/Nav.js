@@ -79,6 +79,11 @@ let Nav = () => {
             </Link>
           </li> */}
           <li className="nav-item">
+            <Link className="nav-link" to="upload">
+              Upload
+            </Link>
+          </li>
+          <li className="nav-item">
             <Link className="nav-link" to="signup">
               Sign Up
             </Link>

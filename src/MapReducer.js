@@ -2,32 +2,35 @@
 
 function MapReducer(state, action) {
   switch (action.type) {
-    case "getTracks": {
-      return {...state, tracks: action.payload}
-    }
-    case "getTypes": {
-      return {...state, types: action.payload}
-    }
-    case "setType": {
-      // return {...state, types: action.payload}
-      console.log(action.payload)
-      return state
-    }
+    // case "getTracks": {
+    //   return {...state, tracks: action.payload}
+    // }
+    // case "getTypes": {
+    //   return {...state, types: action.payload}
+    // }
+    // case "setType": {
+    //   // return {...state, types: action.payload}
+    //   console.log(action.payload)
+    //   return state
+    // }
     case "getTrips": {
       return {...state, trips: action.payload}
     }
-    case "field": {
-      return {...state, newTrip: {...state.newTrip, [action.fieldName]: action.payload}}
+    case "setPoints": {
+      return { ...state, uploadPoints: action.payload };
     }
-    case "log": {
-      console.log("dispatch");
-    }
-    case "loadGPS": {
-      return {...state, points: action.payload}
-    }
-    case "reset": {
-      return {...state, newTrip: {...state.newTrip, name: '', type: '', flag_coords: null}}
-    }
+    // case "field": {
+    //   return {...state, newTrip: {...state.newTrip, [action.fieldName]: action.payload}}
+    // }
+    // case "log": {
+    //   console.log("dispatch");
+    // }
+    // case "loadGPS": {
+    //   return {...state, points: action.payload}
+    // }
+    // case "reset": {
+    //   return {...state, newTrip: {...state.newTrip, name: '', type: '', flag_coords: null}}
+    // }
     default: {
       return state;
     }

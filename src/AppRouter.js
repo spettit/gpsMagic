@@ -11,7 +11,7 @@ import Login from './Pages/LogIn'
 import SignUp from './Pages/SignUp'
 import Track from './Pages/Track'
 import TrackEdit from './Pages/TrackEdit'
-import TrackUpload from './Pages/TrackEdit'
+import TrackUpload from './Pages/TrackUpload/index'
 import Trip from './Pages/Trip'
 import TripEdit from './Pages/TripEdit'
 // import Type from './Pages/Type'
@@ -19,7 +19,7 @@ import TripEdit from './Pages/TripEdit'
 import Nav from './Components/Nav'
 
 function AppRouter() {
-  const [state, dispatch] = useReducer(MapReducer, { trips: [], types: [], newTrip: {} });
+  const [state, dispatch] = useReducer(MapReducer, { trips: [], types: [], newTrip: {}, uploadPoints: [] });
   useEffect(() => getAllTrips(dispatch), []);
 
   return (
@@ -34,7 +34,7 @@ function AppRouter() {
       <TripEdit path='/type/:type/trip/:trip/edit' />
       <Track path='/type/:type/trip/:trip/track/:track' />
       <TrackEdit path='/type/:type/trip/:trip/track/:track/edit' />
-      <TrackUpload path='/type/:type/trip/:trip/upload' />
+      <TrackUpload path='upload' />
     </Router>
     </MapContext.Provider>
   );
