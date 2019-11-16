@@ -1,4 +1,4 @@
-
+import firebase from 'firebase/app'
 
 function MapReducer(state, action) {
   switch (action.type) {
@@ -21,6 +21,11 @@ function MapReducer(state, action) {
     }
     case "authstatechanged": {
       console.log('authstatechanged')
+      return { ...state, user: action.payload}
+    }
+    case "signout": {
+      console.log('signout')
+      firebase.auth().signOut()
       return state
     }
     // case "field": {

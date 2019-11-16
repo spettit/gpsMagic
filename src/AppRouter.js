@@ -5,7 +5,7 @@ import 'firebase/auth'
 
 import MapContext from "./MapContext";
 import MapReducer from "./MapReducer";
-import { getAllTrips } from "./firestore/firestore";
+import { getAllTrips } from "./firebase/firestore";
 import "./App.css";
 
 import Home from "./Pages/Home";
@@ -30,7 +30,7 @@ function AppRouter() {
   useEffect(() => getAllTrips(dispatch), []);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(() => dispatch({type: 'authstatechanged'}))
+    firebase.auth().onAuthStateChanged((user) => dispatch({type: 'authstatechanged', payload: user}))
 }, [])
 
   return (

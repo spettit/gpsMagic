@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "@reach/router";
+import MapContext from "../MapContext"
 
 let Nav = () => {
+  const { dispatch } = useContext(MapContext)
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <Link to="/" className="navbar-brand">
@@ -91,6 +93,11 @@ let Nav = () => {
           <li className="nav-item">
             <Link className="nav-link" to="login">
               Log In
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="#" onClick={() => dispatch({type: "signout"})}>
+              Log Out
             </Link>
           </li>
           
