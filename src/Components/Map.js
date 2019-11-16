@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useContext } from "react";
 import MapContext from "../MapContext";
+import { navigate } from '@reach/router'
 
 const google = window.google;
 
@@ -34,6 +35,7 @@ function addMarkers(trips) {
         map: map,
         icon: myicon
       });
+      marker.addListener('click', () => navigate(`/trip/${trip.data.slug}`));
     }
   });
 }

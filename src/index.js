@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import firebase from 'firebase/app';
+// import * as firebaseui from 'firebaseui'
 
 import './index.css';
 import AppRouter from './AppRouter';
@@ -23,6 +24,8 @@ var config = {
     appId: process.env.appId
   };
   firebase.initializeApp(config);
+
+//   var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 ReactDOM.render(<AppRouter />, document.getElementById('root'));
 
