@@ -16,6 +16,7 @@ import TrackEdit from "./Pages/TrackEdit";
 import TrackUpload from "./Pages/TrackUpload/index";
 import Trip from "./Pages/Trip";
 import TripEdit from "./Pages/TripEdit";
+import MyTrips from "./Pages/MyTrips";
 // import Type from './Pages/Type'
 
 import Nav from "./Components/Nav";
@@ -41,12 +42,12 @@ function AppRouter() {
           <SignUp path="signup" />
           <Login path="login" />
           <Home path="/type/:type" />
-          <Trip path="/type/:type/trip/:trip" />
+          <Trip path="/trip/:trip" />
           <TripEdit path="/type/:type/trip/:trip/edit" />
           <Track path="/type/:type/trip/:trip/track/:track" />
           <TrackEdit path="/type/:type/trip/:trip/track/:track/edit" />
           {state.user ? <TrackUpload path="upload" /> : <Redirect from="upload" to="login" noThrow/> }
-          
+          {state.user ? <MyTrips path="mytrips" /> : <Redirect from="mytrips" to="login" noThrow/> }
         </Router>
       </MapContext.Provider>
   );
