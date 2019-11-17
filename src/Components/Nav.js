@@ -80,11 +80,11 @@ let Nav = () => {
               Sailing
             </Link>
           </li> */}
-          {/* <li className="nav-item">
+          <li className="nav-item">
             <Link className="nav-link" to="upload">
               Upload
             </Link>
-          </li> */}
+          </li>
           
           <li className="nav-item" style={{display: state.user ? "none" : "block"}}>
             <Link className="nav-link" to="login">
