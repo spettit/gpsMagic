@@ -48,7 +48,7 @@ let Nav = () => {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              Filter by Continent
+              Filter by Country
             </div>
             <div
               className="dropdown-menu"
@@ -80,9 +80,15 @@ let Nav = () => {
               Sailing
             </Link>
           </li> */}
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link className="nav-link" to="upload">
               Upload
+            </Link>
+          </li> */}
+          
+          <li className="nav-item" style={{display: state.user ? "none" : "block"}}>
+            <Link className="nav-link" to="login">
+              Log In
             </Link>
           </li>
           <li className="nav-item" style={{display: state.user ? "none" : "block"}}>
@@ -90,19 +96,15 @@ let Nav = () => {
               Sign Up
             </Link>
           </li>
-          <li className="nav-item" style={{display: state.user ? "none" : "block"}}>
-            <Link className="nav-link" to="login">
-              Log In
+         
+          <li className="nav-item">
+          <Link className="nav-link" to="#">
+            {state.user && "My Trips"}
             </Link>
           </li>
           <li className="nav-item" style={{display: state.user ? "block" : "none"}}>
-            <Link className="nav-link" to="#" onClick={() => dispatch({type: "signout"})}>
+            <Link className="nav-link" to="/" onClick={() => dispatch({type: "signout"})}>
               Log Out
-            </Link>
-          </li>
-          <li className="nav-item">
-          <Link className="nav-link" to="#">
-            {state.user && state.user.email}
             </Link>
           </li>
           

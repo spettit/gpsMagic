@@ -8,7 +8,14 @@ var map;
 
 const options = {
   zoom: 2,
+  // maxZoom: 2,
+  // minZoom: 2,
+  // scrollwheel: false,
+  // disableDoubleClickZoom: true,
   center: { lat: 0, lng: 0 },
+  // draggable: false,
+  disableDefaultUI: true,
+  gestureHandling: 'none',
   styles: [
     {
       featureType: "poi",
