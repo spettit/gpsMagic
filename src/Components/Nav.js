@@ -85,24 +85,24 @@ let Nav = () => {
               Upload
             </Link>
           </li>
-          <li className="nav-item">
+          <li className="nav-item" style={{display: state.user ? "none" : "block"}}>
             <Link className="nav-link" to="signup">
               Sign Up
             </Link>
           </li>
-          <li className="nav-item">
+          <li className="nav-item" style={{display: state.user ? "none" : "block"}}>
             <Link className="nav-link" to="login">
               Log In
             </Link>
           </li>
-          <li className="nav-item">
+          <li className="nav-item" style={{display: state.user ? "block" : "none"}}>
             <Link className="nav-link" to="#" onClick={() => dispatch({type: "signout"})}>
               Log Out
             </Link>
           </li>
           <li className="nav-item">
           <Link className="nav-link" to="#">
-            {state.user ? state.user.email : "logged out"}
+            {state.user && state.user.email}
             </Link>
           </li>
           

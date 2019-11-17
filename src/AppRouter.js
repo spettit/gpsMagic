@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect } from "react";
-import { Router, Link } from "@reach/router";
+import { Router, Redirect } from "@reach/router";
 import firebase from "firebase/app";
 import 'firebase/auth'
 
@@ -45,7 +45,8 @@ function AppRouter() {
           <TripEdit path="/type/:type/trip/:trip/edit" />
           <Track path="/type/:type/trip/:trip/track/:track" />
           <TrackEdit path="/type/:type/trip/:trip/track/:track/edit" />
-          <TrackUpload path="upload" />
+          {state.user ? <TrackUpload path="upload" /> : <Redirect from="upload" to="login" noThrow/> }
+          
         </Router>
       </MapContext.Provider>
   );

@@ -7,21 +7,21 @@ import './index.css';
 import AppRouter from './AppRouter';
 import * as serviceWorker from './serviceWorker';
 
-require('dotenv').config()
+const env = require('./firebaseconfig.json')
 
-console.log(process.env.projectId)
+console.log(".env", env)
 
 // import 'firebase/firestore'
 // import 'firebase/storage'
 
 var config = {
-    apiKey: "AIzaSyAK5HPlq6JxUwX3bJOnZy0rlH0iScbyOMU",
-    authDomain: process.env.authDomain,
-    databaseURL: process.env.databaseURL,
-    projectId: "gpxmagic",
-    storageBucket: process.env.storageBucket,
-    messagingSenderId: process.env.messagingSenderId,
-    appId: process.env.appId
+    apiKey: env.apiKey,
+    authDomain: env.authDomain,
+    databaseURL: env.databaseURL,
+    projectId: env.projectId,
+    storageBucket: env.storageBucket,
+    messagingSenderId: env.messagingSenderId,
+    appId: env.appId
   };
   firebase.initializeApp(config);
 
