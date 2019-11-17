@@ -3,7 +3,7 @@ import MapContext from '../../MapContext'
 
 
 const UploadPointsList = () => {
-    const {dispatch, state} = useContext(MapContext)
+    const { state } = useContext(MapContext)
     const { uploadPoints } = state
     return (
         <table style={{width: "800px", textAlign: "left", fontSize: "small"}}>

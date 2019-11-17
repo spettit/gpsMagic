@@ -1,18 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import firebase from 'firebase/app';
-// import * as firebaseui from 'firebaseui'
 
 import './index.css';
 import AppRouter from './AppRouter';
 import * as serviceWorker from './serviceWorker';
 
 const env = require('./firebaseconfig.json')
-
-console.log(".env", env)
-
-// import 'firebase/firestore'
-// import 'firebase/storage'
 
 var config = {
     apiKey: env.apiKey,
@@ -25,7 +19,6 @@ var config = {
   };
   firebase.initializeApp(config);
 
-//   var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 ReactDOM.render(<AppRouter />, document.getElementById('root'));
 
