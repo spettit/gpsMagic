@@ -1,5 +1,5 @@
 import React, {useRef, useEffect, useContext} from 'react'
-import MapContext from "../../MapContext"
+import MapContext from "../../../MapContext"
 
 let google = window.google
 

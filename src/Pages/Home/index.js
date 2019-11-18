@@ -1,6 +1,6 @@
 import React, { useEffect, useContext  } from 'react'
-import Map from '../Components/Map'
-import MapContext from '../MapContext'
+import Map from '../../Layout/Map'
+import MapContext from '../../MapContext'
 
 let Home = (props) => {
     const { dispatch } = useContext(MapContext)

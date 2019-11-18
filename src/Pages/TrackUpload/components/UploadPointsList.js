@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import MapContext from '../../MapContext'
+import MapContext from '../../../MapContext'
 
 
 const UploadPointsList = () => {

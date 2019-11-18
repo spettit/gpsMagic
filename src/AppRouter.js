@@ -8,18 +8,18 @@ import MapReducer from "./MapReducer";
 import { getAllTrips } from "./firebase/firestore";
 import "./App.css";
 
-import Home from "./Pages/Home";
+import Home from "./Pages/Home/index";
 import Login from "./Pages/LogIn";
 import SignUp from "./Pages/SignUp";
 import Track from "./Pages/Track";
 import TrackEdit from "./Pages/TrackEdit";
 import TrackUpload from "./Pages/TrackUpload/index";
-import Trip from "./Pages/Trip";
+import Trip from "./Pages/Trip/index";
 import TripEdit from "./Pages/TripEdit";
 import MyTrips from "./Pages/MyTrips";
 // import Type from './Pages/Type'
 
-import Nav from "./Components/Nav";
+import Nav from "./Layout/Nav";
 
 function AppRouter() {
   const [state, dispatch] = useReducer(MapReducer, {

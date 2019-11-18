@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import _ from 'lodash'
-import MapContext from '../../MapContext'
-import convertGPXtoJSON from './utils/convertGPXtoJSON'
+import MapContext from '../../../MapContext'
+import convertGPXtoJSON from '../utils/convertGPXtoJSON'
 
 const handleChange = (e, dispatch) => {
     const file = e.target.files[0];

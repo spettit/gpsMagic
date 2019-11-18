@@ -6,9 +6,9 @@ import "firebase/firestore";
 
 export function getAllTrips(dispatch) {
   let trips = [];
-  const trackRef = firebase.firestore().collection("trips");
+  const tripRef = firebase.firestore().collection("trips");
   // .orderBy("meta.starttime", "desc");
-  trackRef.get().then(snap => {
+  tripRef.get().then(snap => {
     trips = snap.docs;
     const docs = trips.map(doc => {
       return { id: doc.id, data: doc.data() };
@@ -19,9 +19,9 @@ export function getAllTrips(dispatch) {
 
 export function getAllTripsByUserId(userid, dispatch) {
   let trips = [];
-  const trackRef = firebase.firestore().collection("trips").where("uid", "==", userid);
+  const tripRef = firebase.firestore().collection("trips").where("uid", "==", userid);
   // .orderBy("meta.starttime", "desc");
-  trackRef.get().then(snap => {
+  tripRef.get().then(snap => {
     trips = snap.docs;
     const docs = trips.map(doc => {
       return { id: doc.id, data: doc.data() };
@@ -30,7 +30,26 @@ export function getAllTripsByUserId(userid, dispatch) {
   });
 }
 
+export function getTripByTripId(tripid, dispatch) {
+  const tripRef = firebase.firestore().collection("trips").where("slug", "==", "nepal");
+  tripRef.get().then(snap => {
+    const data = snap.docs[0].data()
+    dispatch({type: "setCurrentTrip", payload: data})
+  })
+}
 
+export function setCurrentTripTracks(tripid, dispatch) {
+    let tracks = []
+    const trackRef = firebase.firestore().collection("tracks").where("trip", "==", "Nepal")
+    trackRef.get().then(snap => {
+      tracks = snap.docs;
+      const docs = tracks.map(doc => {
+        return { id: doc.id, data: doc.data() };
+      });
+      dispatch({ type: "setTracksByTripId", payload: docs });
+    });
+  
+}
 
 // export function getAllTracks(dispatch) {
 //   let tracks = [];

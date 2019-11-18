@@ -1,7 +1,7 @@
 import React from "react";
-import FilePicker from "./FilePicker";
-import UploadMap from "./UploadMap";
-import UploadPointsList from './UploadPointsList'
+import FilePicker from "./components/FilePicker";
+import UploadMap from "./components/UploadMap";
+import UploadPointsList from './components/UploadPointsList'
 
 let TrackUpload = props => (
   <div>

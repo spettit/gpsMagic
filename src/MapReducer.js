@@ -16,6 +16,12 @@ function MapReducer(state, action) {
     case "getTrips": {
       return {...state, trips: action.payload}
     }
+    case "setCurrentTrip": {
+      return {...state, currentTrip: action.payload}
+    }
+    case "setTracksByTripId": {
+      return{...state, currentTracks: action.payload}
+    }
     case "setPoints": {
       return { ...state, uploadPoints: action.payload };
     }
