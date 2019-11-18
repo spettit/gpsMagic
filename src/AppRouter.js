@@ -26,7 +26,9 @@ function AppRouter() {
     trips: [],
     types: [],
     newTrip: {},
-    uploadPoints: []
+    currentTrip: {},
+    uploadPoints: [],
+    currentTracks: []
   });
   useEffect(() => getAllTrips(dispatch), []);
 

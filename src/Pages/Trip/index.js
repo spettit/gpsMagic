@@ -1,6 +1,8 @@
 import React, {useContext, useEffect} from 'react'
 import MapContext from '../../MapContext'
 import TripMap from './components/TripMap'
+import TrackList from './components/TrackList'
+import Stats from './components/Stats'
 import { getTripByTripId, setCurrentTripTracks } from '../../firebase/firestore'
 
 let Trip = (props) => {
@@ -11,7 +13,8 @@ let Trip = (props) => {
         <div>
             <h1>{props.trip}</h1>
             <TripMap />
-            
+            <TrackList />
+            <Stats />
         </div>
     )
 }

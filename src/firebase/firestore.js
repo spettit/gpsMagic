@@ -40,7 +40,7 @@ export function getTripByTripId(tripid, dispatch) {
 
 export function setCurrentTripTracks(tripid, dispatch) {
     let tracks = []
-    const trackRef = firebase.firestore().collection("tracks").where("trip", "==", "Nepal")
+    const trackRef = firebase.firestore().collection("tracks").where("trip", "==", "Nepal").orderBy("start_time")
     trackRef.get().then(snap => {
       tracks = snap.docs;
       const docs = tracks.map(doc => {
