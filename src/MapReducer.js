@@ -25,6 +25,9 @@ function MapReducer(state, action) {
     case "setPoints": {
       return { ...state, uploadPoints: action.payload };
     }
+    case "setCurrentTrackById": {
+      return{...state, currentTrack: action.payload}
+    }
     case "authstatechanged": {
       console.log('authstatechanged')
       return { ...state, user: action.payload}

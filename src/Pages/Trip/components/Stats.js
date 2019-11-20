@@ -10,7 +10,7 @@ const Stats = () => {
             <p>{state.currentTrip.type}</p>
             <p>{state.currentTrip.date && state.currentTrip.date.toString()}</p>
             {state.currentTrip.participants && state.currentTrip.participants.map((person) => {
-                return(<p>{person}</p>)
+                return(<p key={person}>{person}</p>)
             })}
         </div>
     )

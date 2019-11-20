@@ -11,7 +11,7 @@ import "./App.css";
 import Home from "./Pages/Home/index";
 import Login from "./Pages/LogIn";
 import SignUp from "./Pages/SignUp";
-import Track from "./Pages/Track";
+import Track from "./Pages/Track/index";
 import TrackEdit from "./Pages/TrackEdit";
 import TrackUpload from "./Pages/TrackUpload/index";
 import Trip from "./Pages/Trip/index";
@@ -28,7 +28,8 @@ function AppRouter() {
     newTrip: {},
     currentTrip: {},
     uploadPoints: [],
-    currentTracks: []
+    currentTracks: [],
+    currentTrack: {}
   });
   useEffect(() => getAllTrips(dispatch), []);
 
@@ -46,7 +47,7 @@ function AppRouter() {
           <Home path="/type/:type" />
           <Trip path="/trip/:trip" />
           <TripEdit path="/type/:type/trip/:trip/edit" />
-          <Track path="/type/:type/trip/:trip/track/:track" />
+          <Track path="/trip/:trip/track/:track" />
           <TrackEdit path="/type/:type/trip/:trip/track/:track/edit" />
           {state.user ? <TrackUpload path="upload" /> : <Redirect from="upload" to="login" noThrow/> }
           {state.user ? <MyTrips path="mytrips" /> : <Redirect from="mytrips" to="login" noThrow/> }

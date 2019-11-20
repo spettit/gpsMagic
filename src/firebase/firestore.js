@@ -51,6 +51,13 @@ export function setCurrentTripTracks(tripid, dispatch) {
   
 }
 
+
+export function getCurrentTrackById(trackId, dispatch) {
+  const trackRef = firebase.firestore().collection("tracks").doc(trackId)
+  trackRef.get()
+  .then((doc) => dispatch({ type: "setCurrentTrackById", payload: doc.data()}) )
+}
+
 // export function getAllTracks(dispatch) {
 //   let tracks = [];
 //   const trackRef = firebase

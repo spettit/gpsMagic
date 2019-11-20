@@ -1,7 +1,5 @@
 import React, {useRef, useEffect, useContext} from 'react'
 import MapContext from "../../../MapContext"
-import randomcolor from 'randomcolor'
-
 
 let google = window.google
 
@@ -53,7 +51,7 @@ function addPoly(points) {
     // });
 }
 
-const TripMap = () => {
+const TrackMap = () => {
   const { dispatch, state } = useContext(MapContext)
     const mapContainer = useRef(null)
     useEffect(() => {
@@ -61,20 +59,13 @@ const TripMap = () => {
     }, [])
 
     useEffect(() => {
-      if(poly){
-        poly.setMap(null)
-      }
-        if(state.currentTracks && state.currentTracks.length > 0){
-            state.currentTracks.forEach(track => {
-                addPoly(track.data.minified_points)
-                console.log(track.data.minified_points)
-            })
-        }
-    }, [dispatch, state.currentTracks, state.points, state.uploadPoints])
+      if(poly){poly.setMap(null)}
+      if(state.currentTrack){addPoly(state.currentTrack.minified_points)}}, [state.currentTrack])
+
 
     return (
         <div ref={mapContainer} style={{ width: "500px", height: "500px"}} />
     )
 }
 
-export default TripMap
+export default TrackMap

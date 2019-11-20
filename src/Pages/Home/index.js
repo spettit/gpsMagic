@@ -1,5 +1,5 @@
 import React, { useEffect, useContext  } from 'react'
-import Map from '../../Layout/Map'
+import Map from './Map'
 import MapContext from '../../MapContext'
 
 let Home = (props) => {
