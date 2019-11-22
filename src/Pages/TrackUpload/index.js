@@ -3,13 +3,13 @@ import FilePicker from "./components/FilePicker";
 import ImagePicker from "./components/ImagePicker"
 import UploadMap from "./components/UploadMap";
 import UploadPointsList from './components/UploadPointsList'
-import { getImagesByTrack } from '../../firebase/firestore'
+// import { getImagesByTrack } from '../../firebase/firestore'
 import MapContext from '../../MapContext'
-import ImageGallery from './components/ImageGallery'
+// import ImageGallery from './components/ImageGallery'
 
 let TrackUpload = props => {
   const {state, dispatch} = useContext(MapContext)
-  useEffect(() => getImagesByTrack(state.currentTrack.id, dispatch))
+  // useEffect(() => getImagesByTrack(state.currentTrack.id, dispatch))
   return (
   
     <div>
@@ -21,7 +21,7 @@ let TrackUpload = props => {
       <ImagePicker />
       <FilePicker />
       <UploadMap />
-      <ImageGallery />
+      {/* <ImageGallery /> */}
       <UploadPointsList  />
     </div>
   );

@@ -1,13 +1,14 @@
 import React, { useContext } from 'react'
 import MapContext from '../../../MapContext'
-import { navigate } from '@reach/router'
+import { navigate, Link } from '@reach/router'
 
 
 const TrackList = () => {
     const { state } = useContext(MapContext)
     const { currentTracks } = state
     return (
-        <table style={{width: "800px", textAlign: "left", fontSize: "small"}}>
+        <div>
+            <table style={{width: "800px", textAlign: "left", fontSize: "small"}}>
             <thead>
             <tr>
                 <th>name</th>
@@ -29,6 +30,10 @@ const TrackList = () => {
                 })}
             </tbody>
         </table>
+        <Link to="upload"><h2>+</h2></Link>
+
+        </div>
+        
     )
 }
 

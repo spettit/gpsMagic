@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Link } from '@reach/router'
 import MapContext from '../MapContext'
 import { getAllTripsByUserId } from '../firebase/firestore'
 
@@ -11,15 +12,8 @@ const MyTrips = () => {
             <h4>{state.user.uid}</h4>
 
             {state.trips.map((trip) => <p key={trip.id}>{trip.data.name}</p>)}
-            <form>
-                <h2>New Trip</h2>
-                <label>Name
-                    <input type="text" placeholder="Give this trip a name"/>
-                </label>
-               <button type="submit">Add</button>
-            </form>
+            <Link to="/newtrip"><h2>+</h2></Link>
         </div>
-        
     )
 }
 
