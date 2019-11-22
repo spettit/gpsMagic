@@ -29,8 +29,11 @@ function MapReducer(state, action) {
       return{...state, currentTrack: action.payload}
     }
     case "authstatechanged": {
-      console.log('authstatechanged')
+      // console.log('authstatechanged')
       return { ...state, user: action.payload}
+    }
+    case "getAllImages": {
+      return {...state, images: action.payload}
     }
     case "signout": {
       console.log('signout')

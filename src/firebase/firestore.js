@@ -1,4 +1,4 @@
-import firebase from "firebase/app";
+import firebase from './firebase'
 import "firebase/firestore";
 // import "firebase/storage"
 
@@ -55,7 +55,29 @@ export function setCurrentTripTracks(tripid, dispatch) {
 export function getCurrentTrackById(trackId, dispatch) {
   const trackRef = firebase.firestore().collection("tracks").doc(trackId)
   trackRef.get()
-  .then((doc) => dispatch({ type: "setCurrentTrackById", payload: doc.data()}) )
+  .then((doc) => dispatch({ type: "setCurrentTrackById", payload: {...doc.data(), id: doc.id}}) )
+}
+
+export function addImageToTrack(track, file, url) {
+  firebase.firestore().collection("images").doc().set({
+    name: file.name,
+    lastModified: file.lastModified,
+    size: file.size,
+    imageUrl: url,
+    track: track
+  })
+}
+
+export function getImagesByTrack(track, dispatch) {
+  let images = []
+  firebase.firestore().collection("images").where("track", "==", track).get()
+  .then(snap => {
+    images = snap.docs
+    const docs = images.map(doc => {
+      return {id: doc.id, data: doc.data()}
+    })
+    dispatch({ type: "getAllImages", payload: docs})
+  })
 }
 
 // export function getAllTracks(dispatch) {

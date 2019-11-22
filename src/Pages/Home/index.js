@@ -7,6 +7,7 @@ let Home = (props) => {
     useEffect(() => dispatch({type: "setType", payload: props.type}))
     return (
         <div>
+            <div style={{height: "100px"}}></div>
             <Map />{props.type}
         </div>
 

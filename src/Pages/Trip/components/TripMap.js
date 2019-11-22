@@ -11,7 +11,9 @@ let poly
 
 const options = {
     zoom: 15,
-    center: { lat: 51.319571, lng: 0.315287 },
+    center: { lat: 0, lng: 0 },
+    disableDefaultUI: true,
+  gestureHandling: 'none',
     styles: [
       {
         featureType: "poi",
@@ -73,7 +75,7 @@ const TripMap = () => {
     }, [dispatch, state.currentTracks, state.points, state.uploadPoints])
 
     return (
-        <div ref={mapContainer} style={{ width: "500px", height: "500px"}} />
+        <div ref={mapContainer} style={{ width: "400px", height: "400px", margin: "10px"}} />
     )
 }
 

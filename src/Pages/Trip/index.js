@@ -11,10 +11,32 @@ let Trip = (props) => {
     useEffect(() => setCurrentTripTracks(props.trip, dispatch), [dispatch, props.trip])
     return (
         <div>
-            <h1>{props.trip}</h1>
+            <h1>{state.currentTrip.name}</h1>
+            {/* <img src={state.currentTrip.image} alt="main" style={{width: "100vw", height: "200px"}}/ */}
+            <div style={{
+                width:"100vw", 
+                height:"600px", 
+                backgroundImage: `url(${state.currentTrip.image})`, 
+                backgroundRepeat: "no-repeat", 
+                backgroundAttachment: "fixed", 
+                backgroundPosition: "center",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "flex-end",
+                alignItems: "top",
+                backgroundColor: "lightgray",
+                // alignContent: "center",
+                // justifyItems: "center",
+
+                
+                }}>
             <TripMap />
+            </div>
+            <div className="container">
             <TrackList />
             <Stats />
+            </div>
+            
         </div>
     )
 }

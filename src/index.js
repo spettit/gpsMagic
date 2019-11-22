@@ -1,23 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import firebase from 'firebase/app';
+
 
 import './index.css';
 import AppRouter from './AppRouter';
 import * as serviceWorker from './serviceWorker';
 
-const env = require('./firebaseconfig.json')
 
-var config = {
-    apiKey: env.apiKey,
-    authDomain: env.authDomain,
-    databaseURL: env.databaseURL,
-    projectId: env.projectId,
-    storageBucket: env.storageBucket,
-    messagingSenderId: env.messagingSenderId,
-    appId: env.appId
-  };
-  firebase.initializeApp(config);
 
 
 ReactDOM.render(<AppRouter />, document.getElementById('root'));
