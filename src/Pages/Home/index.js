@@ -1,6 +1,7 @@
 import React, { useEffect, useContext  } from 'react'
-import Map from './Map'
+import Map from './components/Map'
 import MapContext from '../../MapContext'
+import TripList from './components/TripList'
 
 let Home = (props) => {
     const { dispatch } = useContext(MapContext)
@@ -9,6 +10,7 @@ let Home = (props) => {
         <div>
             <div style={{height: "100px"}}></div>
             <Map />{props.type}
+            <TripList />
         </div>
 
     )
