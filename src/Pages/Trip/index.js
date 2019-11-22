@@ -3,20 +3,23 @@ import MapContext from '../../MapContext'
 import TripMap from './components/TripMap'
 import TrackList from './components/TrackList'
 import Stats from './components/Stats'
-import { getTripByTripId, setCurrentTripTracks } from '../../firebase/firestore'
+import { getTripBySlug, setCurrentTripTracks } from '../../firebase/firestore'
 
 let Trip = (props) => {
     const { state, dispatch } = useContext(MapContext)
-    useEffect(() => getTripByTripId(props.trip, dispatch),[dispatch, props.trip])
-    useEffect(() => setCurrentTripTracks(props.trip, dispatch), [dispatch, props.trip])
+    useEffect(() => getTripBySlug(props.trip, dispatch),[dispatch, props.trip])
+
+    console.log(state.currentTrip.image)
+    // useEffect(() => setCurrentTripTracks(state.currentTrack.id || null, dispatch), [dispatch, state.currentTrack.id])
     return (
         <div>
+            <div style={{height: "100px"}}></div>
             <h1>{state.currentTrip.name}</h1>
             {/* <img src={state.currentTrip.image} alt="main" style={{width: "100vw", height: "200px"}}/ */}
             <div style={{
                 width:"100vw", 
                 height:"600px", 
-                backgroundImage: `url(${state.currentTrip.image})`, 
+                backgroundImage: `url("${state.currentTrip.image}")`,
                 backgroundRepeat: "no-repeat", 
                 backgroundAttachment: "fixed", 
                 backgroundPosition: "center",

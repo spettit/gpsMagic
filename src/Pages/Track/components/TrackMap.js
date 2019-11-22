@@ -3,7 +3,7 @@ import MapContext from "../../../MapContext"
 
 let google = window.google
 
-const bounds = new google.maps.LatLngBounds();
+let bounds = new google.maps.LatLngBounds();
 let map
 let poly
 
@@ -57,6 +57,8 @@ const TrackMap = () => {
     useEffect(() => {
         map = new google.maps.Map(mapContainer.current, options);
     }, [])
+
+    useEffect(() => {bounds = new google.maps.LatLngBounds()})
 
     useEffect(() => {
       if(poly){poly.setMap(null)}

@@ -30,17 +30,19 @@ export function getAllTripsByUserId(userid, dispatch) {
   });
 }
 
-export function getTripByTripId(tripid, dispatch) {
-  const tripRef = firebase.firestore().collection("trips").where("slug", "==", "nepal");
+export function getTripBySlug(slug, dispatch) {
+  const tripRef = firebase.firestore().collection("trips").where("slug", "==", slug);
   tripRef.get().then(snap => {
     const data = snap.docs[0].data()
     dispatch({type: "setCurrentTrip", payload: data})
+    setCurrentTripTracks(snap.docs[0].id, dispatch)
   })
 }
 
-export function setCurrentTripTracks(tripid, dispatch) {
+function setCurrentTripTracks(tripId, dispatch) {
+  console.log(tripId)
     let tracks = []
-    const trackRef = firebase.firestore().collection("tracks").where("trip", "==", "Nepal").orderBy("start_time")
+    const trackRef = firebase.firestore().collection("tracks").where("trip", "==", tripId).orderBy("start_time")
     trackRef.get().then(snap => {
       tracks = snap.docs;
       const docs = tracks.map(doc => {
