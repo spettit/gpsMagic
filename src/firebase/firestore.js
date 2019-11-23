@@ -82,6 +82,15 @@ export function getImagesByTrack(track, dispatch) {
   })
 }
 
+export function getUseDetailsByUID(uid, dispatch) {
+  if(!uid) {
+    dispatch({type: "setUserData", payload: {}})
+  }else{
+    firebase.firestore().collection("users").doc(uid).get()
+    .then(user => dispatch({type: "setUserData", payload: user.data()}))
+  }
+}
+
 // export function getAllTracks(dispatch) {
 //   let tracks = [];
 //   const trackRef = firebase

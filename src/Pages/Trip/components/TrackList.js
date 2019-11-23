@@ -30,7 +30,8 @@ const TrackList = () => {
                 })}
             </tbody>
         </table>
-        <Link to="upload"><h2>+</h2></Link>
+        {state.user && <Link to="upload"><h2>+</h2></Link>}
+        
 
         </div>
         

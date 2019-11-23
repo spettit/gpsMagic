@@ -116,7 +116,7 @@ let Nav = () => {
           </li>
 
           <li className="nav-item">
-            <Link className="nav-link" to="mytrips">
+            <Link className="nav-link" to={`id/${state.user && state.user.uid}/mytrips`}>
               {state.user && "My Trips"}
             </Link>
           </li>

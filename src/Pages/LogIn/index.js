@@ -1,5 +1,5 @@
 import React from 'react'
-import {signIn} from '../firebase/auth'
+import {signIn} from '../../firebase/auth'
 // import MapContext from '../MapContext'
 
 

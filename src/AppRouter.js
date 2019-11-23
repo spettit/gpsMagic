@@ -1,7 +1,9 @@
 import React, { useReducer, useEffect } from "react";
-import { Router, Redirect } from "@reach/router";
+import { Router, Redirect, navigate } from "@reach/router";
 import firebase from "firebase/app";
 import 'firebase/auth'
+
+import { getUseDetailsByUID } from "./firebase/firestore"
 
 import MapContext from "./MapContext";
 import MapReducer from "./MapReducer";
@@ -9,14 +11,14 @@ import { getAllTrips } from "./firebase/firestore";
 import "./App.css";
 
 import Home from "./Pages/Home";
-import Login from "./Pages/LogIn";
+import Login from "./Pages/LogIn/index";
 import SignUp from "./Pages/SignUp";
 import Track from "./Pages/Track";
 import TrackEdit from "./Pages/TrackEdit";
 import TrackUpload from "./Pages/TrackUpload";
 import Trip from "./Pages/Trip";
 import TripEdit from "./Pages/TripEdit";
-import MyTrips from "./Pages/MyTrips";
+import MyTrips from "./Pages/MyTrips/index";
 import NewTrip from "./Pages/NewTrip"
 // import Type from './Pages/Type'
 
@@ -31,12 +33,20 @@ function AppRouter() {
     uploadPoints: [],
     currentTracks: [],
     currentTrack: {},
-    images: []
+    images: [],
+    userProfile: {}
   });
   useEffect(() => getAllTrips(dispatch), []);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => dispatch({type: 'authstatechanged', payload: user}))
+    firebase.auth().onAuthStateChanged((user) => {
+      
+      dispatch({type: 'authstatechanged', payload: user})
+      getUseDetailsByUID(user ? user.uid : null, dispatch)
+      if(user){navigate(`id/${user.uid}/mytrips`)
+
+      }
+  })
 }, [])
 
   return (
@@ -53,7 +63,7 @@ function AppRouter() {
           <TrackEdit path="/type/:type/trip/:trip/track/:track/edit" />
           <NewTrip path="newtrip" />
           {state.user ? <TrackUpload path="/trip/:trip/upload" /> : <Redirect from="upload" to="login" noThrow/> }
-          {state.user ? <MyTrips path="mytrips" /> : <Redirect from="mytrips" to="login" noThrow/> }
+          {state.user ? <MyTrips path={`id/${state.user.uid}/mytrips`} /> : <Redirect from="id/*/mytrips" to="login" noThrow/> }
         </Router>
       </MapContext.Provider>
   );

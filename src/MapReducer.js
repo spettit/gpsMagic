@@ -32,6 +32,9 @@ function MapReducer(state, action) {
       // console.log('authstatechanged')
       return { ...state, user: action.payload}
     }
+    case "setUserData": {
+      return {...state, userProfile: action.payload}
+    }
     case "getAllImages": {
       return {...state, images: action.payload}
     }
