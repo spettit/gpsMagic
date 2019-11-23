@@ -6,7 +6,8 @@ function TripList(props) {
   const { state } = useContext(MapContext);
 
   function renderList() {
-    console.log("render list");
+    console.log("render my list");
+    
     return state.trips.map(trip => {
       return (
         <div key={trip.id}>

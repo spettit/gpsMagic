@@ -13,7 +13,7 @@ let Trip = (props) => {
     // useEffect(() => setCurrentTripTracks(state.currentTrack.id || null, dispatch), [dispatch, state.currentTrack.id])
     return (
         <div>
-            <div style={{height: "100px"}}></div>
+            <div className="Top-spacer"></div>
             <h1>{state.currentTrip.name}</h1>
             {/* <img src={state.currentTrip.image} alt="main" style={{width: "100vw", height: "200px"}}/ */}
             <div style={{

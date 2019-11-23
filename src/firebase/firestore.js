@@ -91,6 +91,11 @@ export function getUseDetailsByUID(uid, dispatch) {
   }
 }
 
+export function addUserProfile(uid, email, first_name, last_name) {
+  const data = {email: email, first_name: first_name, last_name: last_name}
+  firebase.firestore().collection("users").doc(uid).set(data)
+}
+
 // export function getAllTracks(dispatch) {
 //   let tracks = [];
 //   const trackRef = firebase

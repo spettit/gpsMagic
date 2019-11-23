@@ -8,7 +8,7 @@ function NewTrip(props) {
   const [file, setFile] = useState();
   return (
     <div className="container">
-      <div style={{ height: "100px" }}></div>
+      <div className="Top-spacer"></div>
       <h2>Add a new Trip</h2>
       <form>
         <div>

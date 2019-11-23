@@ -120,6 +120,11 @@ let Nav = () => {
               {state.user && "My Trips"}
             </Link>
           </li>
+          <li className="nav-item">
+            <Link className="nav-link" to={`id/${state.user && state.user.uid}/userprofile`}>
+              {state.user && "User Profile"}
+            </Link>
+          </li>
           <li
             className="nav-item"
             style={{ display: state.user ? "block" : "none" }}
