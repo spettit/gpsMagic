@@ -10,18 +10,24 @@ let SignIn = () => {
     signIn(email.value, password.value);
   };
   return (
-    <div>
+    <div className="container">
+        <div className="Top-spacer"></div>
       <h1>Log In</h1>
       <form onSubmit={handleSignIn}>
-        <label>
+          <div>
+          <label>
           Email
           <input name="email" type="email" placeholder="email" />
         </label>
+          </div>
+        <div>
         <label>
           Password
-          <input name="password" type="text" placeholder="paswword" />
+          <input name="password" type="text" placeholder="password" />
         </label>
-        <button type="submit">Submit</button>
+        </div>
+        
+        <button type="submit">Log In</button>
       </form>
     </div>
   );

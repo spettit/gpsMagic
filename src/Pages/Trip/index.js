@@ -3,7 +3,7 @@ import MapContext from '../../MapContext'
 import TripMap from './components/TripMap'
 import TrackList from './components/TrackList'
 import Stats from './components/Stats'
-import { getTripBySlug, setCurrentTripTracks } from '../../firebase/firestore'
+import { getTripBySlug } from '../../firebase/firestore'
 
 let Trip = (props) => {
     const { state, dispatch } = useContext(MapContext)

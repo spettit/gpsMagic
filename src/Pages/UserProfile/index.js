@@ -1,15 +1,16 @@
-import React, {useContext} from 'react'
+import React, { useContext } from "react";
+import MapContext from "../../MapContext";
 
 const UserProfile = () => {
-    return (
-        <div>
-            <div className="Top-spacer">
-            
-            </div>
-            <h1>User Profile</h1>
-           
-        </div>
-    )
-}
+  const { state } = useContext(MapContext);
+  return (
+    <div>
+      <div className="Top-spacer"></div>
+      <h1>User Profile</h1>
+      <p>{state.userProfile && state.userProfile.first_name}</p>
+      <img src={state.userProfile.profile_pic} alt="user" width="100px" />
+    </div>
+  );
+};
 
-export default UserProfile
+export default UserProfile;

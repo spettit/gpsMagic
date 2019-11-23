@@ -11,7 +11,7 @@ function TripList(props) {
       return (
         <div key={trip.id}>
             <Link to={`/trip/${trip.data.slug}`}>
-            <img src={trip.data.image} height="100" width="100" alt="trip" style={{borderRadius: "10%"}}/>
+            <img src={trip.data.thumbnail} height="100" width="100" alt="trip" style={{borderRadius: "10%"}}/>
           {trip.data.name}
 
             </Link>

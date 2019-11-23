@@ -52,7 +52,7 @@ function addPoly(points) {
 }
 
 const TrackMap = () => {
-  const { dispatch, state } = useContext(MapContext)
+  const { state } = useContext(MapContext)
     const mapContainer = useRef(null)
     useEffect(() => {
         map = new google.maps.Map(mapContainer.current, options);

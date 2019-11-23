@@ -1,6 +1,6 @@
 import React, {useRef, useEffect, useContext} from 'react'
 import MapContext from "../../../MapContext"
-import randomcolor from 'randomcolor'
+// import randomcolor from 'randomcolor'
 
 
 let google = window.google

@@ -1,5 +1,5 @@
 import React from 'react'
-import {signUp} from '../firebase/auth'
+import {signUp} from '../../firebase/auth'
 // import MapContext from '../MapContext'
 
 
@@ -11,7 +11,7 @@ let SignUp = () => {
         signUp(email.value, password.value, first_name.value, last_name.value)
     }
     return (
-        <div>
+        <div className="container">
             <div className="Top-spacer"></div>
         <h1>Sign Up</h1>
         <form onSubmit={handleSignUp}>
