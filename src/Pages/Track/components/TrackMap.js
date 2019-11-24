@@ -6,6 +6,7 @@ let google = window.google
 let bounds = new google.maps.LatLngBounds();
 let map
 let poly
+let marker
 
 const options = {
     zoom: 15,
@@ -51,7 +52,11 @@ function addPoly(points) {
     // });
 }
 
-const TrackMap = () => {
+function addMarker(lat, lng){
+  marker = new google.maps.Marker({position: {lat, lng}, map})
+}
+
+const TrackMap = (props) => {
   const { state } = useContext(MapContext)
     const mapContainer = useRef(null)
     useEffect(() => {
@@ -63,6 +68,21 @@ const TrackMap = () => {
     useEffect(() => {
       if(poly){poly.setMap(null)}
       if(state.currentTrack){addPoly(state.currentTrack.minified_points)}}, [state.currentTrack])
+
+      useEffect(() => {
+        if(state.currentTrack.minified_points){
+          addMarker(state.currentTrack.minified_points[0].lat, state.currentTrack.minified_points[0].lng)
+        }
+        
+      }, [state.currentTrack.minified_points])
+
+      useEffect(() => {
+
+        if(marker && props.marker){
+          marker.setPosition(new google.maps.LatLng(props.marker.lat, props.marker.lng))
+        }
+        
+      })
 
 
     return (

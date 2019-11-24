@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import MapContext from '../../../MapContext'
 import { navigate, Link } from '@reach/router'
+import moment from 'moment'
 
 
 const TrackList = () => {
@@ -23,7 +24,7 @@ const TrackList = () => {
                         <tr key={track.id} onClick={() => navigate(`${state.currentTrip.slug}/track/${track.id}`)}>
                             <td>{track.data.name}</td>
                             <td>{track.data.distance}</td>
-                            <td>{track.data.start_time.toString()}</td>
+                            <td>{moment(track.data.start_time).format("dddd, MMMM Do YYYY, h:mm:ss a")}</td>
                             {/* <td>{track.data.}</td> */}
                         </tr>
                     )

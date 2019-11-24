@@ -33,7 +33,7 @@ function AppRouter() {
     currentTrip: {},
     uploadPoints: [],
     currentTracks: [],
-    currentTrack: {},
+    currentTrack: {minifiedPoints: []},
     images: [],
     userProfile: {}
   });
