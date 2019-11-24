@@ -8,8 +8,6 @@ import { getTripBySlug } from '../../firebase/firestore'
 let Trip = (props) => {
     const { state, dispatch } = useContext(MapContext)
     useEffect(() => getTripBySlug(props.trip, dispatch),[dispatch, props.trip])
-
-    console.log(state.currentTrip.image)
     // useEffect(() => setCurrentTripTracks(state.currentTrack.id || null, dispatch), [dispatch, state.currentTrack.id])
     return (
         <div>

@@ -73,7 +73,6 @@ const TripMap = () => {
         if(state.currentTracks && state.currentTracks.length > 0){
             state.currentTracks.forEach(track => {
                 addPoly(track.data.minified_points)
-                console.log(track.data.minified_points)
             })
         }
     }, [dispatch, state.currentTracks, state.points, state.uploadPoints])

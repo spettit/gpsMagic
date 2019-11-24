@@ -39,7 +39,6 @@ function MapReducer(state, action) {
       return {...state, images: action.payload}
     }
     case "signout": {
-      console.log('signout')
       firebase.auth().signOut()
       return state
     }

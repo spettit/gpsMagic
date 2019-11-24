@@ -1,4 +1,4 @@
-import firebase from './firebase'
+import firebase from "./firebase";
 import "firebase/firestore";
 // import "firebase/storage"
 
@@ -19,7 +19,10 @@ export function getAllTrips(dispatch) {
 
 export function getAllTripsByUserId(userid, dispatch) {
   let trips = [];
-  const tripRef = firebase.firestore().collection("trips").where("uid", "==", userid);
+  const tripRef = firebase
+    .firestore()
+    .collection("trips")
+    .where("uid", "==", userid);
   // .orderBy("meta.starttime", "desc");
   tripRef.get().then(snap => {
     trips = snap.docs;
@@ -31,69 +34,98 @@ export function getAllTripsByUserId(userid, dispatch) {
 }
 
 export function getTripBySlug(slug, dispatch) {
-  const tripRef = firebase.firestore().collection("trips").where("slug", "==", slug);
+  const tripRef = firebase
+    .firestore()
+    .collection("trips")
+    .where("slug", "==", slug);
   tripRef.get().then(snap => {
-    const data = snap.docs[0].data()
-    dispatch({type: "setCurrentTrip", payload: data})
-    setCurrentTripTracks(snap.docs[0].id, dispatch)
-  })
+    const data = snap.docs[0].data();
+    dispatch({ type: "setCurrentTrip", payload: data });
+    setCurrentTripTracks(snap.docs[0].id, dispatch);
+  });
 }
 
 function setCurrentTripTracks(tripId, dispatch) {
-  console.log(tripId)
-    let tracks = []
-    const trackRef = firebase.firestore().collection("tracks").where("trip", "==", tripId).orderBy("start_time")
-    trackRef.get().then(snap => {
-      tracks = snap.docs;
-      const docs = tracks.map(doc => {
-        return { id: doc.id, data: doc.data() };
-      });
-      dispatch({ type: "setTracksByTripId", payload: docs });
+  let tracks = [];
+  const trackRef = firebase
+    .firestore()
+    .collection("tracks")
+    .where("trip", "==", tripId)
+    .orderBy("start_time");
+  trackRef.get().then(snap => {
+    tracks = snap.docs;
+    const docs = tracks.map(doc => {
+      return { id: doc.id, data: doc.data() };
     });
-  
+    dispatch({ type: "setTracksByTripId", payload: docs });
+  });
 }
 
-
 export function getCurrentTrackById(trackId, dispatch) {
-  const trackRef = firebase.firestore().collection("tracks").doc(trackId)
-  trackRef.get()
-  .then((doc) => dispatch({ type: "setCurrentTrackById", payload: {...doc.data(), id: doc.id}}) )
+  const trackRef = firebase
+    .firestore()
+    .collection("tracks")
+    .doc(trackId);
+  trackRef
+    .get()
+    .then(doc =>
+      dispatch({
+        type: "setCurrentTrackById",
+        payload: { ...doc.data(), id: doc.id }
+      })
+    );
 }
 
 export function addImageToTrack(track, file, url) {
-  firebase.firestore().collection("images").doc().set({
-    name: file.name,
-    lastModified: file.lastModified,
-    size: file.size,
-    imageUrl: url,
-    track: track
-  })
+  firebase
+    .firestore()
+    .collection("images")
+    .doc()
+    .set({
+      name: file.name,
+      lastModified: file.lastModified,
+      size: file.size,
+      imageUrl: url,
+      track: track
+    });
 }
 
 export function getImagesByTrack(track, dispatch) {
-  let images = []
-  firebase.firestore().collection("images").where("track", "==", track).get()
-  .then(snap => {
-    images = snap.docs
-    const docs = images.map(doc => {
-      return {id: doc.id, data: doc.data()}
-    })
-    dispatch({ type: "getAllImages", payload: docs})
-  })
+  let images = [];
+  firebase
+    .firestore()
+    .collection("images")
+    .where("track", "==", track)
+    .get()
+    .then(snap => {
+      images = snap.docs;
+      const docs = images.map(doc => {
+        return { id: doc.id, data: doc.data() };
+      });
+      dispatch({ type: "getAllImages", payload: docs });
+    });
 }
 
 export function getUseDetailsByUID(uid, dispatch) {
-  if(!uid) {
-    dispatch({type: "setUserData", payload: {}})
-  }else{
-    firebase.firestore().collection("users").doc(uid).get()
-    .then(user => dispatch({type: "setUserData", payload: user.data()}))
+  if (!uid) {
+    dispatch({ type: "setUserData", payload: {} });
+  } else {
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(uid)
+      .get()
+      .then(user => dispatch({ type: "setUserData", payload: user.data() }));
   }
 }
 
 export function addUserProfile(uid, email, first_name, last_name) {
-  const data = {email: email, first_name: first_name, last_name: last_name}
-  firebase.firestore().collection("users").doc(uid).set(data)
+  const data = { email: email, first_name: first_name, last_name: last_name };
+  firebase
+    .firestore()
+    .collection("users")
+    .doc(uid)
+    .set(data);
 }
 
 // export function getAllTracks(dispatch) {
@@ -124,8 +156,6 @@ export function addUserProfile(uid, email, first_name, last_name) {
 //       dispatch({ type: "loadGPS", payload: JSON.parse(doc.data().points) })
 //     );
 // }
-
-
 
 // export function getAllTypes(dispatch) {
 //   const trackRef = firebase.firestore().collection("types");
