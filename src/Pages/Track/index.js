@@ -16,7 +16,10 @@ let Track = props => {
   const [theDate, setTheDate] = useState(startDate);
   const [lastPoint, setLastPoint] = useState({ lat: 0, lng: 0 });
   const [nextPoint, setnextPoint] = useState({ lat: 0, lng: 0 });
+  const [lastPointIndex, setLastPointIndex] = useState(0)
   const [markerCoords, setMarkerCoords] = useState({ lat: 0, lng: 0 });
+  const [running, setRunning] = useState(false)
+  const [count, setCount] = useState(0)
   useEffect(() => getCurrentTrackById(props.track, dispatch), [
     dispatch,
     props.track
@@ -25,15 +28,16 @@ let Track = props => {
   useEffect(() => {
     const points = state.currentTrack.minified_points;
     if (points) {
-      for (let i = 0; i < points.length; i++) {
+      for (let i = lastPointIndex; i < points.length; i++) {
         if (points[i].timestamp > theDate.valueOf()) {
           setLastPoint(points[i - 1]);
           setnextPoint(points[i]);
+          setLastPointIndex(i-1)
           return;
         }
       }
     }
-  }, [setnextPoint, state.currentTrack.minified_points, theDate]);
+  }, [lastPointIndex, setnextPoint, state.currentTrack.minified_points, theDate]);
 
   useEffect(() => {
     const duration =
@@ -52,8 +56,10 @@ let Track = props => {
     nextPoint.lat,
     nextPoint.lng,
     nextPoint.timestamp,
-    theDate
+    theDate,
   ]);
+
+
 
   return (
     <div>
@@ -65,6 +71,7 @@ let Track = props => {
         type="number"
         onChange={e => setTheDate(startDate.add(e.target.value, "m"))}
       />
+      <button onClick={() => {setRunning(running => !running)}}>run</button>
     </div>
   );
 };
