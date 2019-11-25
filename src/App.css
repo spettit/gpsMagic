@@ -29,3 +29,7 @@
 .Top-spacer {
   height: 100px;
 }
+
+body {
+  background-color: #282c35;
+}
