@@ -128,6 +128,24 @@ export function addUserProfile(uid, email, first_name, last_name) {
     .set(data);
 }
 
+export function getPhotosByTrack(trackId, dispatch) {
+  console.log("getting photos")
+  let photos = [];
+  const trackRef = firebase
+    .firestore()
+    .collection("photos")
+    .where("track", "==", trackId)
+    // .orderBy("timestamp");
+  trackRef.get().then(snap => {
+    console.log("snap")
+    photos = snap.docs;
+    const docs = photos.map(doc => {
+      return { id: doc.id, ...doc.data() };
+    });
+    dispatch({ type: "getPhotosByTrack", payload: docs });
+  });
+}
+
 // export function getAllTracks(dispatch) {
 //   let tracks = [];
 //   const trackRef = firebase

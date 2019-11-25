@@ -35,7 +35,8 @@ function AppRouter() {
     currentTracks: [],
     currentTrack: {minifiedPoints: []},
     images: [],
-    userProfile: {}
+    userProfile: {},
+    currentTrackPhotos: []
   });
   useEffect(() => getAllTrips(dispatch), []);
 

@@ -28,6 +28,9 @@ function MapReducer(state, action) {
     case "setCurrentTrackById": {
       return{...state, currentTrack: action.payload}
     }
+    case "getPhotosByTrack": {
+      return{...state, currentTrackPhotos: action.payload}
+    }
     case "authstatechanged": {
       // console.log('authstatechanged')
       return { ...state, user: action.payload}
@@ -37,6 +40,9 @@ function MapReducer(state, action) {
     }
     case "getAllImages": {
       return {...state, images: action.payload}
+    }
+    case "setCurrentPhoto": {
+      return {...state, currentPhoto: action.payload}
     }
     case "signout": {
       firebase.auth().signOut()

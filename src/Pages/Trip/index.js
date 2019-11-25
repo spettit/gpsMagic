@@ -4,6 +4,7 @@ import TripMap from './components/TripMap'
 import TrackList from './components/TrackList'
 import Stats from './components/Stats'
 import { getTripBySlug } from '../../firebase/firestore'
+import { CoverageMap } from 'istanbul-lib-coverage'
 
 let Trip = (props) => {
     const { state, dispatch } = useContext(MapContext)
@@ -19,12 +20,13 @@ let Trip = (props) => {
                 height:"600px", 
                 backgroundImage: `url("${state.currentTrip.image}")`,
                 backgroundRepeat: "no-repeat", 
-                backgroundAttachment: "fixed", 
+                // backgroundAttachment: "fixed", 
                 backgroundPosition: "center",
+                backgroundSize: "cover",
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "flex-end",
-                alignItems: "top",
+                alignItems: "flex-end",
                 backgroundColor: "lightgray",
                 // alignContent: "center",
                 // justifyItems: "center",

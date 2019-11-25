@@ -78,7 +78,7 @@ const TripMap = () => {
     }, [dispatch, state.currentTracks, state.points, state.uploadPoints])
 
     return (
-        <div ref={mapContainer} style={{ width: "400px", height: "400px", margin: "10px"}} />
+        <div ref={mapContainer} style={{ width: "200px", height: "200px", margin: "10px"}} />
     )
 }
 

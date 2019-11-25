@@ -57,7 +57,7 @@ function addMarker(lat, lng){
 }
 
 const TrackMap = (props) => {
-  const { state } = useContext(MapContext)
+  const { state, dispatch } = useContext(MapContext)
     const mapContainer = useRef(null)
     useEffect(() => {
         map = new google.maps.Map(mapContainer.current, options);
@@ -83,6 +83,18 @@ const TrackMap = (props) => {
         }
         
       })
+
+      useEffect(() => {
+        if(state.currentTrackPhotos && state.currentTrackPhotos.length > 0){
+          console.log(state.currentTrackPhotos)
+          state.currentTrackPhotos.forEach((photo, index) => {
+            const photoMarker = new google.maps.Marker()
+            photoMarker.setMap(map)
+            photoMarker.setPosition(new google.maps.LatLng(state.currentTrackPhotos[index].coords.lat, state.currentTrackPhotos[index].coords.lng))
+            photoMarker.addListener("click", () => dispatch({type: "setCurrentPhoto", payload: state.currentTrackPhotos[index]}))
+          })
+        }
+      }, [dispatch, state.currentTrackPhotos])
 
 
     return (
