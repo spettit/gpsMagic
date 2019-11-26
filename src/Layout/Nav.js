@@ -23,7 +23,7 @@ let Nav = () => {
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
-          <li className="nav-item dropdown">
+          {/* <li className="nav-item dropdown">
             <div
               className="nav-link dropdown-toggle"
               href="#"
@@ -49,8 +49,8 @@ let Nav = () => {
                 Sailing
               </Link>
             </div>
-          </li>
-          <li className="nav-item dropdown">
+          </li> */}
+          {/* <li className="nav-item dropdown">
             <div
               className="nav-link dropdown-toggle"
               href="#"
@@ -76,7 +76,7 @@ let Nav = () => {
                 North America
               </Link>
             </div>
-          </li>
+          </li> */}
           {/* <li className="nav-item active">
             <Link className="nav-link" to="type/motorcycle">
               Motorcycling

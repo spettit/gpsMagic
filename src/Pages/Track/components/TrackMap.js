@@ -1,6 +1,9 @@
 import React, {useRef, useEffect, useContext} from 'react'
 import MapContext from "../../../MapContext"
 
+import  pic from '../../../Icons/video-solid.svg'
+import bike from '../../../Icons/motorcycle-solid.svg'
+
 let google = window.google
 
 let bounds = new google.maps.LatLngBounds();
@@ -54,6 +57,7 @@ function addPoly(points) {
 
 function addMarker(lat, lng){
   marker = new google.maps.Marker({position: {lat, lng}, map})
+  marker.setIcon(bike)
 }
 
 const TrackMap = (props) => {
@@ -92,6 +96,7 @@ const TrackMap = (props) => {
             photoMarker.setMap(map)
             photoMarker.setPosition(new google.maps.LatLng(state.currentTrackPhotos[index].coords.lat, state.currentTrackPhotos[index].coords.lng))
             photoMarker.addListener("click", () => dispatch({type: "setCurrentPhoto", payload: state.currentTrackPhotos[index]}))
+            photoMarker.setIcon(pic)
           })
         }
       }, [dispatch, state.currentTrackPhotos])
