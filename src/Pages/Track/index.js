@@ -10,16 +10,17 @@ import moment from "moment";
 import { getCurrentTrackById, getPhotosByTrack } from "../../firebase/firestore";
 
 let marker = { lat: 12, lng: -61.75 };
+var interval
 
 let Track = props => {
   const { state, dispatch } = useContext(MapContext);
-  const startDate = moment(state.currentTrack.start_time);
-  const [theDate, setTheDate] = useState(startDate);
+  const startDate = moment(state.currentTrack.start_time).clone();
+  const [theDate, setTheDate] = useState(moment());
   const [lastPoint, setLastPoint] = useState({ lat: 0, lng: 0 });
   const [nextPoint, setnextPoint] = useState({ lat: 0, lng: 0 });
   const [lastPointIndex, setLastPointIndex] = useState(0)
   const [markerCoords, setMarkerCoords] = useState({ lat: 0, lng: 0 });
-  const [running, setRunning] = useState(false)
+  // const [running, setRunning] = useState(false)
   const [count, setCount] = useState(0)
   useEffect(() => getCurrentTrackById(props.track, dispatch), [
     dispatch,
@@ -42,6 +43,8 @@ let Track = props => {
     }
   }, [lastPointIndex, setnextPoint, state.currentTrack.minified_points, theDate]);
 
+
+  // 
   useEffect(() => {
     const duration =
       parseInt(nextPoint.timestamp) - parseInt(lastPoint.timestamp);
@@ -63,7 +66,8 @@ let Track = props => {
     theDate,
   ]);
 
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => setTheDate(startDate.add(count, 'm')), [count])
 
   return (
     <div>
@@ -75,11 +79,10 @@ let Track = props => {
       
       {/* <TrackPointsList /> */}
       <div>{theDate.format("DD/MM/YYYY HH:mm:ss")}</div>
-      <input
-        type="number"
-        onChange={e => setTheDate(startDate.add(e.target.value, "m"))}
-      />
-      <button onClick={() => {setRunning(running => !running)}}>run</button>
+      <button onClick={() => {interval = setInterval(() => {
+        setCount(count => count+1)
+      }, 60);}}>run</button>
+      <button onClick={() => clearInterval(interval)}>Stop</button>
     </div>
   );
 };
