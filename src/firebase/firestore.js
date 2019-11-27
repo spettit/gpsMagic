@@ -135,7 +135,7 @@ export function getPhotosByTrack(trackId, dispatch) {
     .firestore()
     .collection("photos")
     .where("track", "==", trackId)
-    // .orderBy("timestamp");
+    .orderBy("timestamp");
   trackRef.get().then(snap => {
     console.log("snap")
     photos = snap.docs;

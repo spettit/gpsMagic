@@ -22,12 +22,28 @@ let Track = props => {
   const [markerCoords, setMarkerCoords] = useState({ lat: 0, lng: 0 });
   // const [running, setRunning] = useState(false)
   const [count, setCount] = useState(0)
+  const [latestPhoto, setLatestPhoto] = useState({})
+  const [latestPhotoIndex, setLatestPhotoIndex]  = useState(0)
   useEffect(() => getCurrentTrackById(props.track, dispatch), [
     dispatch,
     props.track
   ]);
 
   useEffect(() => getPhotosByTrack(props.track, dispatch), [dispatch, props.track])
+
+  
+  useEffect(() => {
+    state.currentTrackPhotos.forEach((photo, index) => {
+      // console.log(photo.timestamp.seconds, theDate.unix())
+      if(photo.timestamp.seconds < theDate.unix() && index === latestPhotoIndex){
+        setLatestPhoto(photo)
+        setLatestPhotoIndex(index+1)
+        console.log(photo.description)
+      }
+
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [theDate])
 
   useEffect(() => {
     const points = state.currentTrack.minified_points;
@@ -55,7 +71,7 @@ let Track = props => {
     const markerlng =
       lastPoint.lng + (nextPoint.lng - lastPoint.lng) * fraction;
     setMarkerCoords({ lat: markerlat, lng: markerlng });
-    console.log(markerlat, markerlng)
+    // console.log(markerlat, markerlng)
   }, [
     lastPoint.lat,
     lastPoint.lng,
@@ -74,14 +90,14 @@ let Track = props => {
       <h1>{state.currentTrack.name}</h1>
       <div style={{display: "flex"}}>
       <TrackMap marker={markerCoords} />
-      <Photo />
+      <Photo currentPhoto={latestPhoto}/>
       </div>
       
       {/* <TrackPointsList /> */}
       <div>{theDate.format("DD/MM/YYYY HH:mm:ss")}</div>
       <button onClick={() => {interval = setInterval(() => {
         setCount(count => count+1)
-      }, 60);}}>run</button>
+      }, 120);}}>run</button>
       <button onClick={() => clearInterval(interval)}>Stop</button>
     </div>
   );
