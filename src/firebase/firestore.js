@@ -146,6 +146,15 @@ export function getPhotosByTrack(trackId, dispatch) {
   });
 }
 
+export function addNewTrip(data, dispatch) {
+  firebase
+  .firestore()
+  .collection("trips")
+  .add(data)
+  .then(ref => {
+    dispatch({type: "goToMyTrips"})
+  })
+}
 // export function getAllTracks(dispatch) {
 //   let tracks = [];
 //   const trackRef = firebase

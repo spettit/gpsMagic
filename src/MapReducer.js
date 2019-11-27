@@ -1,4 +1,5 @@
 import firebase from 'firebase/app'
+import { navigate } from '@reach/router'
 
 function MapReducer(state, action) {
   switch (action.type) {
@@ -47,6 +48,11 @@ function MapReducer(state, action) {
     case "signout": {
       firebase.auth().signOut()
       return state
+    }
+    case "goToMyTrips": {
+      console.log(`/id/${state.user.uid}/mytrips`)
+      // navigate(`/id/${state.user.uid}/mytrips`)
+      return
     }
     // case "field": {
     //   return {...state, newTrip: {...state.newTrip, [action.fieldName]: action.payload}}

@@ -63,9 +63,10 @@ function AppRouter() {
           <TripEdit path="/type/:type/trip/:trip/edit" />
           <Track path="/trip/:trip/track/:track" />
           <TrackEdit path="/type/:type/trip/:trip/track/:track/edit" />
-          <NewTrip path="newtrip" />
+          {/* <NewTrip path="newtrip" /> */}
           {state.user ? <TrackUpload path="/trip/:trip/upload" /> : <Redirect from="upload" to="login" noThrow/> }
           {state.user ? <MyTrips path={`id/${state.user.uid}/mytrips`} /> : <Redirect from="id/*/mytrips" to="login" noThrow/> }
+          {state.user ? <NewTrip path={`id/${state.user.uid}/newtrip`} /> : <Redirect from="id/*/newtrip" to="login" noThrow/> }
           {state.user ? <UserProfile path={`id/${state.user.uid}/userprofile`} /> : <Redirect from="id/*/userprofile" to="login" noThrow/> }
         </Router>
       </MapContext.Provider>

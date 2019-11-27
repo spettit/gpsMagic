@@ -95,11 +95,12 @@ const TrackMap = (props) => {
             const photoMarker = new google.maps.Marker()
             photoMarker.setMap(map)
             photoMarker.setPosition(new google.maps.LatLng(state.currentTrackPhotos[index].coords.lat, state.currentTrackPhotos[index].coords.lng))
-            photoMarker.addListener("click", () => dispatch({type: "setCurrentPhoto", payload: state.currentTrackPhotos[index]}))
+            // photoMarker.addListener("click", () => dispatch({type: "setCurrentPhoto", payload: state.currentTrackPhotos[index]}))
+            photoMarker.addListener("click", () => props.setLatestPhoto(state.currentTrackPhotos[index]))
             photoMarker.setIcon(pic)
           })
         }
-      }, [dispatch, state.currentTrackPhotos])
+      }, [dispatch, props, state.currentTrackPhotos])
 
 
     return (

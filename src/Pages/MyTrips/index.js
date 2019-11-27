@@ -12,11 +12,11 @@ const MyTrips = () => {
     return (
         <div className="container">
             <h1>My Trips </h1>
-            <h4>{state.userProfile && state.userProfile.first_name}'s Trips</h4>
+            <h4>{state.userProfile && `${state.userProfile.first_name}'s trips`}</h4>
 
             {/* {state.trips.map((trip) => <p key={trip.id}>{trip.data.name}</p>)} */}
             <TripList />
-            <Link to="/newtrip"><h2>+</h2></Link>
+            <Link to={`/id/${state.user.uid}/newtrip`}><h2>+</h2></Link>
         </div>
     )
 }

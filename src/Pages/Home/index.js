@@ -7,10 +7,13 @@ let Home = (props) => {
     const { dispatch } = useContext(MapContext)
     useEffect(() => dispatch({type: "setType", payload: props.type}))
     return (
-        <div className="container">
+        <div>
             <div className="Top-spacer"></div>
             <Map />{props.type}
+            <div className="container">
             <TripList />
+            </div>
+            
         </div>
 
     )

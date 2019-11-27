@@ -2,6 +2,7 @@ import React, {useContext, useEffect} from 'react'
 import MapContext from '../../MapContext'
 import TripMap from './components/TripMap'
 import TrackList from './components/TrackList'
+import SideBar from './components/SideBar'
 import Stats from './components/Stats'
 import { getTripBySlug } from '../../firebase/firestore'
 import { CoverageMap } from 'istanbul-lib-coverage'
@@ -13,8 +14,11 @@ let Trip = (props) => {
     return (
         <div>
             <div className="Top-spacer"></div>
-            <h1>{state.currentTrip.name}</h1>
+            <Stats />
+            {/* <h3>{state.currentTrip.name}</h3> */}
             {/* <img src={state.currentTrip.image} alt="main" style={{width: "100vw", height: "200px"}}/ */}
+            <div style={{display: "flex"}}>
+            <SideBar />
             <div style={{
                 width:"100vw", 
                 height:"600px", 
@@ -35,9 +39,10 @@ let Trip = (props) => {
                 }}>
             <TripMap />
             </div>
+            </div>
             <div className="container">
-            <TrackList />
-            <Stats />
+            {/* <TrackList /> */}
+            
             </div>
             
         </div>

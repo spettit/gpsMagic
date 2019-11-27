@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import MapContext from "../../MapContext";
 import TrackMap from "./components/TrackMap";
 import Photo from "./components/Photo"
+import SideBar from './components/SideBar'
 import TrackPointsList from "./components/PointsTable";
 import moment from "moment";
 
@@ -73,12 +74,8 @@ let Track = props => {
     setMarkerCoords({ lat: markerlat, lng: markerlng });
     // console.log(markerlat, markerlng)
   }, [
-    lastPoint.lat,
-    lastPoint.lng,
-    lastPoint.timestamp,
-    nextPoint.lat,
-    nextPoint.lng,
-    nextPoint.timestamp,
+    lastPoint,
+    nextPoint,
     theDate,
   ]);
 
@@ -89,7 +86,8 @@ let Track = props => {
     <div>
       <h1>{state.currentTrack.name}</h1>
       <div style={{display: "flex"}}>
-      <TrackMap marker={markerCoords} />
+      <SideBar />
+      <TrackMap marker={markerCoords} setLatestPhoto={setLatestPhoto}/>
       <Photo currentPhoto={latestPhoto}/>
       </div>
       
@@ -97,7 +95,7 @@ let Track = props => {
       <div>{theDate.format("DD/MM/YYYY HH:mm:ss")}</div>
       <button onClick={() => {interval = setInterval(() => {
         setCount(count => count+1)
-      }, 120);}}>run</button>
+      }, 60);}}>run</button>
       <button onClick={() => clearInterval(interval)}>Stop</button>
     </div>
   );

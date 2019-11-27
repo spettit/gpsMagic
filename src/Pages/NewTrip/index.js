@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import {addNewTrip} from '../../firebase/firestore'
+import MapContext from '../../MapContext'
+import { navigate } from '@reach/router'
 
 function NewTrip(props) {
   const [name, setName] = useState("");
@@ -6,11 +9,19 @@ function NewTrip(props) {
   const [enddate, setEnddate] = useState("");
   const [description, setDescription] = useState("");
   const [file, setFile] = useState();
+
+  const { state, dispatch } = useContext(MapContext)
+
+  function handleSubmit(e) {
+      e.preventDefault()
+      addNewTrip({name: name, uid: state.user.uid}, dispatch)
+  }
+
   return (
     <div className="container">
       <div className="Top-spacer"></div>
       <h2>Add a new Trip</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <label>
             name
@@ -21,7 +32,7 @@ function NewTrip(props) {
             />
           </label>
         </div>
-        <div>
+        {/* <div>
           <label>
             Start Date
             <input
@@ -66,7 +77,8 @@ function NewTrip(props) {
             />
           </label>
         </div>
-        <img src={file && URL.createObjectURL(file)} alt="pic" width="200px"/>
+        <img src={file && URL.createObjectURL(file)} alt="pic" width="200px"/> */}
+      <button type="submit">Add</button>
       </form>
     </div>
 
