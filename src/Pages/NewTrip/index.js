@@ -5,10 +5,10 @@ import { navigate } from '@reach/router'
 
 function NewTrip(props) {
   const [name, setName] = useState("");
-  const [startdate, setStartdate] = useState("");
-  const [enddate, setEnddate] = useState("");
-  const [description, setDescription] = useState("");
-  const [file, setFile] = useState();
+  // const [startdate, setStartdate] = useState("");
+  // const [enddate, setEnddate] = useState("");
+  // const [description, setDescription] = useState("");
+  // const [file, setFile] = useState();
 
   const { state, dispatch } = useContext(MapContext)
 
