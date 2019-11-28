@@ -6,7 +6,7 @@ function SideBar(props) {
     return (
         <div style={{minWidth: "200px"}}>
             <ul className="list-group">
-            {state.trips.map((trip) => <li key={trip.id} className="list-group-item bg-dark text-white">{trip.data.name}</li>)}
+            {state.trips.map((trip) => <li key={trip.id} className="list-group-item bg-dark text-white list-group-item-action">{trip.data.name}</li>)}
             </ul>
             
         </div>

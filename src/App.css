@@ -34,3 +34,7 @@ body {
   background-color: #282c35;
   color: white;
 }
+
+.mousepointer {
+  cursor: pointer;
+}
