@@ -14,7 +14,7 @@ let Trip = (props) => {
     return (
         <div>
             <div className="Top-spacer"></div>
-            <Stats />
+            {/* <Stats /> */}
             {/* <h3>{state.currentTrip.name}</h3> */}
             {/* <img src={state.currentTrip.image} alt="main" style={{width: "100vw", height: "200px"}}/ */}
             <div style={{display: "flex"}}>
