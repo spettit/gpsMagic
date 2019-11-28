@@ -6,12 +6,12 @@ function TripList(props) {
   const { state } = useContext(MapContext);
 
   function renderList() {
-    return state.trips.map(trip => {
+    return state.usersTrips.map(trip => {
       return (
         <div key={trip.id}>
           <Link to={`/trip/${trip.data.slug}`}>
             <img
-              src={trip.data.image}
+              src={trip.data.thumbnail}
               height="100"
               width="100"
               alt="trip"

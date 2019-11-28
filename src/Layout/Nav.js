@@ -7,7 +7,7 @@ let Nav = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <Link to="/" className="navbar-brand">
-        GPSmagic
+        My Travels
       </Link>
       <button
         className="navbar-toggler"
@@ -97,7 +97,7 @@ let Nav = () => {
               Upload
             </Link>
           </li> */}
-
+{/* 
           <li
             className="nav-item"
             style={{ display: state.user ? "none" : "block" }}
@@ -113,7 +113,7 @@ let Nav = () => {
             <Link className="nav-link" to="signup">
               Sign Up
             </Link>
-          </li>
+          </li> */}
 
           <li className="nav-item">
             <Link className="nav-link" to={`id/${state.user && state.user.uid}/mytrips`}>

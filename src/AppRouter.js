@@ -29,15 +29,10 @@ function AppRouter() {
   const [state, dispatch] = useReducer(MapReducer, {
     trips: [],
     types: [],
-    newTrip: {},
+    usersTrips: [],
     currentTrip: {},
-    uploadPoints: [],
-    currentTracks: [],
-    currentTrack: {minifiedPoints: []},
-    images: [],
-    userProfile: {},
-    currentTrackPhotos: []
   });
+
   useEffect(() => getAllTrips(dispatch), []);
 
   useEffect(() => {
@@ -58,7 +53,7 @@ function AppRouter() {
           <Home path="/" />
           <SignUp path="signup" />
           <Login path="login" />
-          <Home path="/type/:type" />
+
           <Trip path="/trip/:trip" />
           <TripEdit path="/type/:type/trip/:trip/edit" />
           <Track path="/trip/:trip/track/:track" />

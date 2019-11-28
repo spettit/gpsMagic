@@ -17,6 +17,9 @@ function MapReducer(state, action) {
     case "getTrips": {
       return {...state, trips: action.payload}
     }
+    case "getTripsByUserId":; {
+      return {...state, usersTrips: action.payload}
+    }
     case "setCurrentTrip": {
       return {...state, currentTrip: action.payload}
     }
@@ -37,6 +40,7 @@ function MapReducer(state, action) {
       return { ...state, user: action.payload}
     }
     case "setUserData": {
+      // return {...state, user: {...state.user, data: action.payload} }
       return {...state, userProfile: action.payload}
     }
     case "getAllImages": {

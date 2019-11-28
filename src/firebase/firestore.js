@@ -29,7 +29,7 @@ export function getAllTripsByUserId(userid, dispatch) {
     const docs = trips.map(doc => {
       return { id: doc.id, data: doc.data() };
     });
-    dispatch({ type: "getTrips", payload: docs });
+    dispatch({ type: "getTripsByUserId", payload: docs });
   });
 }
 
