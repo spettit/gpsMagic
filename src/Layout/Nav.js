@@ -7,7 +7,7 @@ let Nav = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <Link to="/" className="navbar-brand">
-        travalog
+        trakmaps
       </Link>
       <button
         className="navbar-toggler"
