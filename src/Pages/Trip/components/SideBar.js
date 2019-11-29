@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import MapContext from '../../../MapContext'
 import { getCurrentTrackById } from '../../../firebase/firestore'
 
@@ -7,6 +7,7 @@ function SideBar(props) {
 
     function setTrack(id) {
         props.setMode(1)
+        dispatch({type: "loading"})
         getCurrentTrackById(id, dispatch)
     }
 

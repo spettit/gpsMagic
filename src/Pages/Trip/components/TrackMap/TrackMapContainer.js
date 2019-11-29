@@ -22,7 +22,7 @@ function TrackMapContainer(props) {
 
   useEffect(() => {
     const points = state.currentTrack.minified_points;
-    if (points) {
+    if (points && points.length > 0) {
       for (let i = lastPointIndex; i < points.length; i++) {
         if (points[i].timestamp > theDate.valueOf()) {
           setLastPoint(points[i - 1]);

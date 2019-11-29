@@ -14,8 +14,12 @@ function MapReducer(state, action) {
     //   console.log(action.payload)
     //   return state
     // }
+
+    case "loading": {
+      return {...state, loading: true}
+    }
     case "getTrips": {
-      return {...state, trips: action.payload}
+      return {...state, trips: action.payload, loading: false }
     }
     case "getTripsByUserId":; {
       return {...state, usersTrips: action.payload}
@@ -30,7 +34,7 @@ function MapReducer(state, action) {
       return { ...state, uploadPoints: action.payload };
     }
     case "setCurrentTrackById": {
-      return{...state, currentTrack: action.payload}
+      return{...state, currentTrack: action.payload, loading: false}
     }
     case "getPhotosByTrack": {
       return{...state, currentTrackPhotos: action.payload}

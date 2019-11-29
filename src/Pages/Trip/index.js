@@ -42,7 +42,7 @@ let Trip = (props) => {
             <TripMap />
             </div>}
 
-            {mode === 1 && state.currentTrack && <TrackMapContainer />}
+            {mode === 1 && !state.loading && <TrackMapContainer />}
 
 
             </div>

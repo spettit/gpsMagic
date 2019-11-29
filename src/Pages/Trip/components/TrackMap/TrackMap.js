@@ -1,8 +1,11 @@
 import React, {useRef, useEffect, useContext} from 'react'
 import MapContext from "../../../../MapContext"
 
-import  pic from '../../../../Icons/video-solid.svg'
-import bike from '../../../../Icons/motorcycle-solid.svg'
+import sailing from '../../../../Icons/sailing.png'
+import motorcycling from '../../../../Icons/motorcycling.svg'
+import pic from '../../../../Icons/photo-24px.svg'
+
+// import bike from '../../../../Icons/motorcycle-solid.svg'
 
 let google = window.google
 
@@ -10,6 +13,7 @@ let bounds = new google.maps.LatLngBounds();
 let map
 let poly
 let marker
+let modeIcon
 
 const options = {
     zoom: 15,
@@ -55,14 +59,28 @@ function addPoly(points) {
     // });
 }
 
-function addMarker(lat, lng){
-  marker = new google.maps.Marker({position: {lat, lng}, map})
-  marker.setIcon(bike)
-}
+
 
 const TrackMap = (props) => {
   const { state, dispatch } = useContext(MapContext)
     const mapContainer = useRef(null)
+
+    if(state.currentTrip.type === 'motorcycling') {
+      modeIcon = motorcycling
+    } else {
+      modeIcon = sailing
+    }
+
+    function addMarker(lat, lng){
+      marker = new google.maps.Marker({position: {lat, lng}, map})
+
+        marker.setIcon(modeIcon)
+
+      }
+      
+    
+
+
     useEffect(() => {
         map = new google.maps.Map(mapContainer.current, options);
     }, [])
@@ -100,7 +118,7 @@ const TrackMap = (props) => {
             photoMarker.setIcon(pic)
           })
         }
-      }, [dispatch, props, state.currentTrackPhotos])
+      }, [dispatch, props, state.currentTrackPhotos, state.currentTrip.type])
 
 
     return (

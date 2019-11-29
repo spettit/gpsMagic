@@ -8,3 +8,6 @@ added VS code extension to format .rules files
 
 added @reach/router
 
+icons from font awesome  https://fontawesome.com
+
+

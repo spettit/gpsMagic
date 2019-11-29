@@ -1,24 +1,23 @@
 import React, { useEffect, useContext  } from 'react'
 import Map from './components/Map'
 import MapContext from '../../MapContext'
-import TripList from './components/TripList'
 import SideBar from './components/SideBar'
+import { getAllTrips } from '../../firebase/firestore'
 
 let Home = (props) => {
-    const { dispatch } = useContext(MapContext)
-    useEffect(() => dispatch({type: "setType", payload: props.type}))
+    
+    const { state, dispatch } = useContext(MapContext)
+    
+    useEffect(() => dispatch({type: "loading"}), [dispatch])
+    useEffect(() => getAllTrips(dispatch), [dispatch]);
+
     return (
         <div>
             <div className="Top-spacer"></div>
             <div style={{display: "flex"}}>
                 <SideBar />
-                <Map />{props.type}
+                {!state.loading && <Map />}
             </div>
-            
-            {/* <div className="container">
-            <TripList />
-            </div> */}
-            
         </div>
 
     )

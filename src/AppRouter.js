@@ -7,7 +7,7 @@ import { getUseDetailsByUID } from "./firebase/firestore"
 
 import MapContext from "./MapContext";
 import MapReducer from "./MapReducer";
-import { getAllTrips } from "./firebase/firestore";
+
 import "./App.css";
 
 import Home from "./Pages/Home";
@@ -31,9 +31,10 @@ function AppRouter() {
     types: [],
     usersTrips: [],
     currentTrip: {},
+    loading: false
   });
 
-  useEffect(() => getAllTrips(dispatch), []);
+ 
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
