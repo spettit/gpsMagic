@@ -1,8 +1,8 @@
 import React, {useRef, useEffect, useContext} from 'react'
-import MapContext from "../../../MapContext"
+import MapContext from "../../../../MapContext"
 
-import  pic from '../../../Icons/video-solid.svg'
-import bike from '../../../Icons/motorcycle-solid.svg'
+import  pic from '../../../../Icons/video-solid.svg'
+import bike from '../../../../Icons/motorcycle-solid.svg'
 
 let google = window.google
 

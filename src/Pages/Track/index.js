@@ -96,7 +96,12 @@ let Track = props => {
       <button onClick={() => {interval = setInterval(() => {
         setCount(count => count+1)
       }, 60);}}>run</button>
-      <button onClick={() => clearInterval(interval)}>Stop</button>
+
+      <button onClick={() => {
+        console.log('stop')
+        // clearInterval(interval)
+      }}>Stop</button>
+
     </div>
   );
 };

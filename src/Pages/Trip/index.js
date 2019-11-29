@@ -3,7 +3,7 @@ import MapContext from '../../MapContext'
 import TripMap from './components/TripMap'
 import TrackList from './components/TrackList'
 import SideBar from './components/SideBar'
-import TrackMap from './components/TrackMap'
+import TrackMapContainer from './components/TrackMap/TrackMapContainer'
 import Stats from './components/Stats'
 import { getTripBySlug } from '../../firebase/firestore'
 import { CoverageMap } from 'istanbul-lib-coverage'
@@ -42,7 +42,7 @@ let Trip = (props) => {
             <TripMap />
             </div>}
 
-            {mode === 1 && <TrackMap />}
+            {mode === 1 && state.currentTrack && <TrackMapContainer />}
 
 
             </div>
