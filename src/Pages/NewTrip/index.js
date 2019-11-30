@@ -19,7 +19,7 @@ function NewTrip(props) {
 
   return (
     <div className="container">
-      <div className="Top-spacer"></div>
+      <div className="top-spacer"></div>
       <h2>Add a new Trip</h2>
       <form onSubmit={handleSubmit}>
         <div>

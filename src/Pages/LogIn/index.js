@@ -11,7 +11,7 @@ let SignIn = () => {
   };
   return (
     <div className="container">
-        <div className="Top-spacer"></div>
+        <div className="top-spacer"></div>
       <h1>Log In</h1>
       <form onSubmit={handleSignIn}>
           <div>

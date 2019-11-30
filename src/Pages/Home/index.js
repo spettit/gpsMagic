@@ -13,7 +13,7 @@ let Home = (props) => {
 
     return (
         <div>
-            <div className="Top-spacer"></div>
+            <div className="top-spacer"></div>
             <div style={{display: "flex"}}>
                 <SideBar />
                 {!state.loading && <Map />}

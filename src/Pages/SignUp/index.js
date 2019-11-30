@@ -12,7 +12,7 @@ let SignUp = () => {
     }
     return (
         <div className="container">
-            <div className="Top-spacer"></div>
+            <div className="top-spacer"></div>
         <h1>Sign Up</h1>
         <form onSubmit={handleSignUp}>
             <div>
