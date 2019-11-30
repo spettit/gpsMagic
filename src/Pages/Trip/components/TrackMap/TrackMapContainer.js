@@ -6,7 +6,7 @@ import MapContext from "../../../../MapContext";
 var interval;
 
 function TrackMapContainer(props) {
-  const { state, dispatch } = useContext(MapContext);
+  const { state } = useContext(MapContext);
   const startDate = moment(state.currentTrack.start_time).clone();
   const [theDate, setTheDate] = useState(moment());
   const [lastPoint, setLastPoint] = useState({ lat: 0, lng: 0 });
@@ -15,8 +15,8 @@ function TrackMapContainer(props) {
   const [markerCoords, setMarkerCoords] = useState({ lat: 0, lng: 0 });
   // const [running, setRunning] = useState(false)
   const [count, setCount] = useState(0);
-  const [latestPhoto, setLatestPhoto] = useState({});
-  const [latestPhotoIndex, setLatestPhotoIndex] = useState(0);
+  // const [latestPhoto, setLatestPhoto] = useState({});
+  // const [latestPhotoIndex, setLatestPhotoIndex] = useState(0);
 
   
 

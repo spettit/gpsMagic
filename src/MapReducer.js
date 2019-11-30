@@ -1,5 +1,4 @@
 import firebase from 'firebase/app'
-import { navigate } from '@reach/router'
 
 function MapReducer(state, action) {
   switch (action.type) {
@@ -21,7 +20,7 @@ function MapReducer(state, action) {
     case "getTrips": {
       return {...state, trips: action.payload, loading: false }
     }
-    case "getTripsByUserId":; {
+    case "getTripsByUserId": {
       return {...state, usersTrips: action.payload}
     }
     case "setCurrentTrip": {

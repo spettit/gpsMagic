@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import {addNewTrip} from '../../firebase/firestore'
 import MapContext from '../../MapContext'
-import { navigate } from '@reach/router'
+
 
 function NewTrip(props) {
   const [name, setName] = useState("");

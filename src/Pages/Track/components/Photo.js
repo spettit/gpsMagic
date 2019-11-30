@@ -1,8 +1,7 @@
-import React, {useContext} from 'react';
-import MapContext from '../../../MapContext'
+import React from 'react';
+
 
 function Photo(props) {
-    const { state } = useContext(MapContext)
     return (
         <div style={{margin: "50px", minWidth: "300px"}}>
             {props.currentPhoto.type==="image" && <div style={{

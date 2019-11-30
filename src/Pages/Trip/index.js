@@ -1,12 +1,11 @@
 import React, {useContext, useEffect, useState} from 'react'
 import MapContext from '../../MapContext'
 import TripMap from './components/TripMap'
-import TrackList from './components/TrackList'
+// import TrackList from './components/TrackList'
 import SideBar from './components/SideBar'
 import TrackMapContainer from './components/TrackMap/TrackMapContainer'
-import Stats from './components/Stats'
+// import Stats from './components/Stats'
 import { getTripBySlug } from '../../firebase/firestore'
-import { CoverageMap } from 'istanbul-lib-coverage'
 
 let Trip = (props) => {
     const { state, dispatch } = useContext(MapContext)

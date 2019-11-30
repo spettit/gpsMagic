@@ -3,15 +3,15 @@ import MapContext from "../../MapContext";
 import TrackMap from "./components/TrackMap";
 import Photo from "./components/Photo"
 import SideBar from './components/SideBar'
-import TrackPointsList from "./components/PointsTable";
+// import TrackPointsList from "./components/PointsTable";
 import moment from "moment";
 
 // import TrackList from './components/TrackList'
 // import Stats from './components/Stats'
 import { getCurrentTrackById, getPhotosByTrack } from "../../firebase/firestore";
 
-let marker = { lat: 12, lng: -61.75 };
-var interval
+
+
 
 let Track = props => {
   const { state, dispatch } = useContext(MapContext);
@@ -25,6 +25,9 @@ let Track = props => {
   const [count, setCount] = useState(0)
   const [latestPhoto, setLatestPhoto] = useState({})
   const [latestPhotoIndex, setLatestPhotoIndex]  = useState(0)
+
+  var interval
+  
   useEffect(() => getCurrentTrackById(props.track, dispatch), [
     dispatch,
     props.track
