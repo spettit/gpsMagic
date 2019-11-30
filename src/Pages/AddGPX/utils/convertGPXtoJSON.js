@@ -32,7 +32,7 @@ const convertGPXtoJSON = gpx => {
       const elevation = $(this)
         .children("ele")
         .text();
-      points.push({ lat: Number(lat), lng: Number(lon), timestamp, altitude: elevation });
+      points.push({ lat: Number(lat), lng: Number(lon), timestamp, altitude: elevation, distance: 0, heading: 0, duration: 0, speed: 0 });
     });
   const StartTime = points[0].timestamp;
   return { points, name, StartTime };

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import MapContext from "../../../MapContext";
+import MapContext from "../../MapContext";
 
 function ImageGallery() {
   const { state } = useContext(MapContext);
