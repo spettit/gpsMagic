@@ -12,6 +12,7 @@ function TrackMapContainer(props) {
   const { state } = useContext(MapContext);
   const startDate = moment(state.currentTrack.start_time).clone();
   const [theDate, setTheDate] = useState(moment());
+  const [ points, setPoints ] = useState([])
   const [lastPoint, setLastPoint] = useState({ lat: 0, lng: 0 });
   const [nextPoint, setnextPoint] = useState({ lat: 0, lng: 0 });
   const [lastPointIndex, setLastPointIndex] = useState(0);
@@ -21,10 +22,17 @@ function TrackMapContainer(props) {
   // const [latestPhoto, setLatestPhoto] = useState({});
   // const [latestPhotoIndex, setLatestPhotoIndex] = useState(0);
 
+  useEffect(() => {
+    if (state.currentTrack.events && state.currentTrack.events[0].points) {
+      state.currentTrack.events.forEach(event => {
+        setPoints((points) => [...points, ...event.points])
+      })
+  }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [state.currentTrack])
   
 
   useEffect(() => {
-    const points = state.currentTrack.minified_points;
     if (points && points.length > 0) {
       for (let i = lastPointIndex; i < points.length; i++) {
         if (points[i].timestamp > theDate.valueOf()) {
@@ -35,12 +43,10 @@ function TrackMapContainer(props) {
         }
       }
     }
-  }, [
-    lastPointIndex,
-    setnextPoint,
-    state.currentTrack.minified_points,
-    theDate
-  ]);
+    
+  }, [lastPointIndex, points, setLastPointIndex, theDate]);
+
+// eslint-disable-next-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const duration =
@@ -61,7 +67,7 @@ function TrackMapContainer(props) {
   return (
     <div style={{ width: "100%" }}>
       {startDate.format("dddd, MMMM Do YYYY, h:mm:ss a")}
-      <TrackMap marker={markerCoords} />
+      <TrackMap polylinepoints={points} marker={markerCoords} />
       <button
         onClick={() => {
           interval = setInterval(() => {

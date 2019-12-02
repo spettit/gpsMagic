@@ -88,7 +88,7 @@ export function getCurrentTrackEventsByTrackId(trackId, dispatch) {
     .get()
     .then(event => {
       const events = event.docs.map(doc => {
-        return( {...doc.data(), id: doc.id, })
+        return( {...doc.data(), points: JSON.parse(doc.data().x_points), id: doc.id, })
       })
       dispatch({ type: "getCurrentTrackEventsByTrackId", payload: events})
     });

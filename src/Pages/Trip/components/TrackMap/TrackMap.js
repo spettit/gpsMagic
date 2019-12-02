@@ -89,14 +89,14 @@ const TrackMap = (props) => {
 
     useEffect(() => {
       if(poly){poly.setMap(null)}
-      if(state.currentTrack){addPoly(state.currentTrack.minified_points)}}, [state.currentTrack])
+      if(props.polylinepoints){addPoly(props.polylinepoints)}}, [props.polylinepoints, state.currentTrack])
 
       useEffect(() => {
-        if(state.currentTrack && state.currentTrack.minified_points.length > 0){
-          addMarker(state.currentTrack.minified_points[0].lat, state.currentTrack.minified_points[0].lng)
+        if(props.polylinepoints && props.polylinepoints.length > 0){
+          addMarker(props.polylinepoints[0].lat, props.polylinepoints[0].lng)
         }
-            // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [])
+           
+      }, [props.polylinepoints])
 
       useEffect(() => {
 
