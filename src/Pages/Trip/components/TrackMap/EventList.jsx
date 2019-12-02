@@ -7,7 +7,9 @@ function EventList(props) {
   return (
     <div>
       {state.currentTrack.events &&
-        state.currentTrack.events.map(event => <div>{event.name}</div>)}
+        state.currentTrack.events.map((event, index) => (
+          <div key={index}>{event.name}</div>
+        ))}
       {state.user && (
         <Link to={`/trip/${state.currentTrip.slug}/newevent`}>
           <h2>+</h2>
