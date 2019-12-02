@@ -35,6 +35,9 @@ function MapReducer(state, action) {
     case "setCurrentTrackById": {
       return{...state, currentTrack: action.payload, loading: false}
     }
+    case "getCurrentTrackEventsByTrackId": {
+      return{ ...state, currentTrack: {...state.currentTrack, events: action.payload}}
+    }
     case "getPhotosByTrack": {
       return{...state, currentTrackPhotos: action.payload}
     }

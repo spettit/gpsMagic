@@ -22,6 +22,8 @@ import MyTrips from "./Pages/MyTrips";
 import NewTrip from "./Pages/NewTrip"
 import UserProfile from "./Pages/UserProfile"
 import AddGPX from "./Pages/AddGPX"
+
+import NewEvent from "./Pages/NewEvent"
 // import Type from './Pages/Type'
 
 import Nav from "./Layout/Nav";
@@ -32,6 +34,7 @@ function AppRouter() {
     types: [],
     usersTrips: [],
     currentTrip: {},
+    currentTrack: {events: []},
     loading: false
   });
 
@@ -65,6 +68,7 @@ function AppRouter() {
           {state.user ? <MyTrips path={`id/${state.user.uid}/mytrips`} /> : <Redirect from="id/*/mytrips" to="login" noThrow/> }
           {state.user ? <NewTrip path={`id/${state.user.uid}/newtrip`} /> : <Redirect from="id/*/newtrip" to="login" noThrow/> }
           {state.user ? <UserProfile path={`id/${state.user.uid}/userprofile`} /> : <Redirect from="id/*/userprofile" to="login" noThrow/> }
+          {state.user ? <NewEvent path={`trip/${state.currentTrip.slug}/newevent`} /> : <Redirect from="trip/*/newevent" to="login" noThrow/> }
         </Router>
       </MapContext.Provider>
   );

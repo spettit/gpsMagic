@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import FilePicker from "./components/FilePicker";
 import UploadMap from "./components/UploadMap";
 import UploadPointsList from "./components/UploadPointsList";
 import Meta from "./components/Meta";
+import { uploadEventPoints } from '../../firebase/firestore'
+
+import MapContext from '../../MapContext'
 
 import calcDistanceBetweenPoints from "./utils/calculateDistanceBetweenPoints";
 import calculateHeadingFromPoints from "./utils/calculateHeadingFromPoints";
@@ -12,6 +15,7 @@ import calculateCardinalFromHeading from "./utils/calculateCardinalFromHeading";
 let TrackUpload = props => {
   const [points, setPoints] = useState([]);
   const [totalDistance, setTotalDistance] = useState(0);
+  const { state } = useContext(MapContext)
 
   function sortByTimestamp() {
     const newPoints = sortPointsByTimestamp(points);
@@ -37,7 +41,7 @@ let TrackUpload = props => {
             lat: newPoints[newPoints.length - 1].lat,
             lng: newPoints[newPoints.length - 1].lng
           }
-        ) >= 500
+        ) >= 100
       ) {
         newPoints.push(points[i]);
       }
@@ -123,11 +127,21 @@ let TrackUpload = props => {
     setPoints(newPoints);
   }
 
+  function upload() {
+    uploadEventPoints(state.currentTrack.id, {
+      type: "gps",
+      name: "test gps",
+      starttime: points[0].timestamp,
+      endtime: points[points.length-1].timestamp,
+      x_points: JSON.stringify(points)
+    })
+  }
+
   return (
     <div>
       <div className="top-spacer" />
       <div>Add a GPX file</div>
-      <div className="top-spacer"></div>
+  <div>{state.currentTrack.id}</div>
       <FilePicker setPoints={setPoints} />
       <button onClick={sortByTimestamp}>sort</button>
       <button onClick={filterByDistance500}>filter 500</button>
@@ -136,6 +150,7 @@ let TrackUpload = props => {
       <button onClick={calcCardinals}>cardinals</button>
       <button onClick={calcDurations}>durations</button>
       <button onClick={calcSpeed}>speed</button>
+      <button onClick={upload}>upload</button>
       <div style={{ display: "flex" }}>
         <UploadMap
           points={points}

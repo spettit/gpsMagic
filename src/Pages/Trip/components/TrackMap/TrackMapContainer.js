@@ -1,7 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
-import TrackMap from "./TrackMap";
+
 import moment from "moment";
 import MapContext from "../../../../MapContext";
+
+import TrackMap from "./TrackMap";
+import EventList from './EventList'
 
 var interval;
 
@@ -70,6 +73,7 @@ function TrackMapContainer(props) {
       </button>
       <button onClick={() => clearInterval(interval)}>Stop</button>
       <div>{theDate.format("DD/MM/YYYY HH:mm:ss")}</div>
+      <EventList />
     </div>
   );
 }

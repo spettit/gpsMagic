@@ -23,15 +23,15 @@
 
 .map {
   width: 100%;
-  height: 600px;
+  height: 720px;
 }
 
 .top-spacer {
-  height: 100px;
+  height: 55px;
 }
 
 body {
-  background-color: #282c35;
+  background-color: #656565;
   color: white;
 }
 

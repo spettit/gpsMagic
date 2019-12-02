@@ -98,7 +98,7 @@ let Track = props => {
       <div>{theDate.format("DD/MM/YYYY HH:mm:ss")}</div>
       <button onClick={() => {interval = setInterval(() => {
         setCount(count => count+1)
-      }, 60);}}>run</button>
+      }, 60);}}>ruvn</button>
 
       <button onClick={() => {
         console.log('stop')

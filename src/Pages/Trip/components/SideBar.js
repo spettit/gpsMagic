@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from '@reach/router'
 import MapContext from '../../../MapContext'
 import { getCurrentTrackById } from '../../../firebase/firestore'
 
@@ -20,7 +21,6 @@ function SideBar(props) {
             onClick={() => setTrack(track.id)}
             >{track.data.name}</li>)}
             </ul>
-            
         </div>
     );
 }

@@ -1,5 +1,6 @@
 import firebase from "./firebase";
 import "firebase/firestore";
+
 // import "firebase/storage"
 
 // var storage = firebase.storage();
@@ -74,6 +75,23 @@ export function getCurrentTrackById(trackId, dispatch) {
         payload: { ...doc.data(), id: doc.id }
       })
     );
+    getCurrentTrackEventsByTrackId(trackId, dispatch)
+}
+
+export function getCurrentTrackEventsByTrackId(trackId, dispatch) {
+  const trackRef = firebase
+    .firestore()
+    .collection("tracks")
+    .doc(trackId)
+    .collection("events");
+  trackRef
+    .get()
+    .then(event => {
+      const events = event.docs.map(doc => {
+        return( {...doc.data(), id: doc.id, })
+      })
+      dispatch({ type: "getCurrentTrackEventsByTrackId", payload: events})
+    });
 }
 
 export function addImageToTrack(track, file, url) {
@@ -154,6 +172,16 @@ export function addNewTrip(data, dispatch) {
   .then(ref => {
     dispatch({type: "goToMyTrips"})
   })
+}
+
+export function uploadEventPoints(trackId, data) {
+  firebase
+  .firestore()
+  .collection("tracks")
+  .doc(trackId)
+  .collection("events")
+  .add(data)
+
 }
 // export function getAllTracks(dispatch) {
 //   let tracks = [];

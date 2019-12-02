@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import {addNewTrip} from '../../firebase/firestore'
 import MapContext from '../../MapContext'
+import slugify from "slugify";
 
 
 function NewTrip(props) {
@@ -14,7 +15,7 @@ function NewTrip(props) {
 
   function handleSubmit(e) {
       e.preventDefault()
-      addNewTrip({name: name, uid: state.user.uid}, dispatch)
+      addNewTrip({name: name, uid: state.user.uid, slug: slugify(name)}, dispatch)
   }
 
   return (
