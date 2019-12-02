@@ -15,6 +15,7 @@ function EventList(props) {
           <h2>+</h2>
         </Link>
       )}
+      hello
     </div>
   );
 }

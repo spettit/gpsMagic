@@ -40,7 +40,7 @@ export function getTripBySlug(slug, dispatch) {
     .collection("trips")
     .where("slug", "==", slug);
   tripRef.get().then(snap => {
-    const data = snap.docs[0].data();
+    const data = { ...snap.docs[0].data(), id: snap.docs[0].id};
     dispatch({ type: "setCurrentTrip", payload: data });
     setCurrentTripTracks(snap.docs[0].id, dispatch);
   });
@@ -172,6 +172,13 @@ export function addNewTrip(data, dispatch) {
   .then(ref => {
     dispatch({type: "goToMyTrips"})
   })
+}
+
+export function addNewTrack(data) {
+  firebase
+  .firestore()
+  .collection("tracks")
+  .add(data)
 }
 
 export function uploadEventPoints(trackId, data) {
