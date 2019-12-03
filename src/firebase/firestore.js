@@ -189,7 +189,14 @@ export function uploadEventPoints(trackId, data) {
   .doc(trackId)
   .collection("events")
   .add(data)
+}
 
+export function uploadMinifiedPoints(trackId, data) {
+  firebase
+  .firestore()
+  .collection("tracks")
+  .doc(trackId)
+  .set({"minified_points": data}, {merge: true})
 }
 // export function getAllTracks(dispatch) {
 //   let tracks = [];

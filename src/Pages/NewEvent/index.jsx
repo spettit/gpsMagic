@@ -10,6 +10,7 @@ function NewEvent(props) {
       <div className="top-spacer" />
       <h1>New Event</h1>
       <h2>{state.currentTrip.name}</h2>
+      <h2>{state.currentTrack.id}</h2>
       <div>
         <Link className="btn" to="/addgpx">
           Upload GPX file
@@ -24,10 +25,6 @@ function NewEvent(props) {
       <div>
         <button className="btn">Link to external URL</button>
       </div>
-      <h3>Event List</h3>
-      <ul>
-        <li>Event One</li>
-      </ul>
     </div>
   );
 }
