@@ -9,7 +9,7 @@ function NewTrack(props) {
   const [name, setName] = useState("");
   const [slug, setSlug] = useState("");
   const [trip, setTrip] = useState("");
-  const [start_time, setStart_time] = useState(moment().valueOf());
+  const [starttime, setStarttime] = useState(moment().valueOf());
 
   useEffect(() => setTrip(state.currentTrip.id), [state.currentTrip.id]);
 
@@ -20,7 +20,7 @@ function NewTrack(props) {
       name,
       slug,
       trip,
-      start_time
+      start_time: starttime
     });
   }
 

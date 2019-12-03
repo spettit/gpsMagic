@@ -13,7 +13,7 @@ import "./App.css";
 import Home from "./Pages/Home";
 import Login from "./Pages/LogIn";
 import SignUp from "./Pages/SignUp";
-import Track from "./Pages/Track";
+// import Track from "./Pages/Track";
 import TrackEdit from "./Pages/TrackEdit";
 // import TrackUpload from "./Pages/TrackUpload";
 import Trip from "./Pages/Trip";
@@ -62,7 +62,7 @@ function AppRouter() {
           <AddGPX path="addgpx" />
           <Trip path="/trip/:trip" />
           <TripEdit path="/type/:type/trip/:trip/edit" />
-          <Track path="/trip/:trip/track/:track" />
+          {/* <Track path="/trip/:trip/track/:track" /> */}
           <NewTrack path="/trip/:trip/newtrack" />
           {/* <TrackEdit path="/type/:type/trip/:trip/track/:track/edit" /> */}
           {/* <NewTrip path="newtrip" /> */}

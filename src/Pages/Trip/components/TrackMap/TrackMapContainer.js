@@ -13,6 +13,7 @@ function TrackMapContainer(props) {
   const startDate = moment(state.currentTrack.start_time).clone();
   const [theDate, setTheDate] = useState(moment());
   const [ points, setPoints ] = useState([])
+  const [ images, setImages] = useState([])
   const [lastPoint, setLastPoint] = useState({ lat: 0, lng: 0 });
   const [nextPoint, setnextPoint] = useState({ lat: 0, lng: 0 });
   const [lastPointIndex, setLastPointIndex] = useState(0);
@@ -23,9 +24,14 @@ function TrackMapContainer(props) {
   // const [latestPhotoIndex, setLatestPhotoIndex] = useState(0);
 
   useEffect(() => {
-    if (state.currentTrack.events && state.currentTrack.events[0].points) {
+    if (state.currentTrack && state.currentTrack.events && state.currentTrack.events[0] && state.currentTrack.events[0].points) {
       state.currentTrack.events.forEach(event => {
-        setPoints((points) => [...points, ...event.points])
+        if(event.type === "gps"){
+          setPoints((points) => [...points, ...event.points])
+        } else if(event.type === "image") {
+          setImages([...images, event])
+        }
+        
       })
   }
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -67,7 +73,7 @@ function TrackMapContainer(props) {
   return (
     <div style={{ width: "100%" }}>
       {startDate.format("dddd, MMMM Do YYYY, h:mm:ss a")}
-      <TrackMap polylinepoints={points} marker={markerCoords} />
+      <TrackMap polylinepoints={points} marker={markerCoords} images={images} />
       <button
         onClick={() => {
           interval = setInterval(() => {

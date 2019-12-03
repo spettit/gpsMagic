@@ -83,7 +83,8 @@ export function getCurrentTrackEventsByTrackId(trackId, dispatch) {
     .firestore()
     .collection("tracks")
     .doc(trackId)
-    .collection("events");
+    .collection("events")
+    .orderBy("starttime")
   trackRef
     .get()
     .then(event => {

@@ -5,7 +5,6 @@ import sailing from '../../../../Icons/sailing.png'
 import motorcycling from '../../../../Icons/motorcycling.svg'
 import pic from '../../../../Icons/photo-24px.svg'
 
-// import bike from '../../../../Icons/motorcycle-solid.svg'
 
 let google = window.google
 
@@ -107,18 +106,16 @@ const TrackMap = (props) => {
       })
 
       useEffect(() => {
-        if(state.currentTrackPhotos && state.currentTrackPhotos.length > 0){
-          console.log(state.currentTrackPhotos)
-          state.currentTrackPhotos.forEach((photo, index) => {
+        if(props.images && props.images.length > 0){
+          props.images.forEach((photo, index) => {
+            const startpoint = photo.points[0]
             const photoMarker = new google.maps.Marker()
             photoMarker.setMap(map)
-            photoMarker.setPosition(new google.maps.LatLng(state.currentTrackPhotos[index].coords.lat, state.currentTrackPhotos[index].coords.lng))
-            // photoMarker.addListener("click", () => dispatch({type: "setCurrentPhoto", payload: state.currentTrackPhotos[index]}))
-            photoMarker.addListener("click", () => props.setLatestPhoto(state.currentTrackPhotos[index]))
+            photoMarker.setPosition(new google.maps.LatLng(startpoint.lat, startpoint.lng))
             photoMarker.setIcon(pic)
           })
         }
-      }, [dispatch, props, state.currentTrackPhotos, state.currentTrip.type])
+      }, [dispatch, props, state.currentTrackPhotos])
 
 
     return (
