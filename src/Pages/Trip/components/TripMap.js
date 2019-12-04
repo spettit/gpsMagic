@@ -70,12 +70,12 @@ const TripMap = () => {
       if(poly){
         poly.setMap(null)
       }
-        if(state.currentTracks && state.currentTracks.length > 0){
-            state.currentTracks.forEach(track => {
-                addPoly(track.data.minified_points)
+        if(state.currentTrip && state.currentTrip.tracks){
+            state.currentTrip.tracks.forEach(track => {
+                addPoly(track.minified_points)
             })
         }
-    }, [dispatch, state.currentTracks, state.points, state.uploadPoints])
+    }, [state.currentTrip])
 
     return (
         <div ref={mapContainer} style={{ width: "200px", height: "200px", margin: "10px"}} />

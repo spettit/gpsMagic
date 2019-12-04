@@ -12,7 +12,7 @@ export function getAllTrips(dispatch) {
   tripRef.get().then(snap => {
     trips = snap.docs;
     const docs = trips.map(doc => {
-      return { id: doc.id, data: doc.data() };
+      return { ...doc.data(), id: doc.id,  };
     });
     dispatch({ type: "getTrips", payload: docs });
   });
@@ -28,7 +28,7 @@ export function getAllTripsByUserId(userid, dispatch) {
   tripRef.get().then(snap => {
     trips = snap.docs;
     const docs = trips.map(doc => {
-      return { id: doc.id, data: doc.data() };
+      return { ...doc.data(), id: doc.id,  };
     });
     dispatch({ type: "getTripsByUserId", payload: docs });
   });
@@ -56,7 +56,7 @@ function setCurrentTripTracks(tripId, dispatch) {
   trackRef.get().then(snap => {
     tracks = snap.docs;
     const docs = tracks.map(doc => {
-      return { id: doc.id, data: doc.data() };
+      return { ...doc.data(), id: doc.id };
     });
     dispatch({ type: "setTracksByTripId", payload: docs });
   });

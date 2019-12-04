@@ -9,15 +9,15 @@ function TripList(props) {
     return state.usersTrips.map(trip => {
       return (
         <div key={trip.id}>
-          <Link to={`/trip/${trip.data.slug}`}>
+          <Link to={`/trip/${trip.slug}`}>
             <img
-              src={trip.data.thumbnail}
+              src={trip.thumbnail}
               height="100"
               width="100"
               alt="trip"
               style={{ borderRadius: "10%" }}
             />
-            {trip.data.name}
+            {trip.name}
           </Link>
         </div>
       );

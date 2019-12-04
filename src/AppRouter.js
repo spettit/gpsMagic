@@ -33,10 +33,11 @@ function AppRouter() {
   const [state, dispatch] = useReducer(MapReducer, {
     trips: [],
     types: [],
-    usersTrips: [],
     currentTrip: {},
-    currentTrack: {events: []},
-    loading: false
+    currentTrack: null,
+    user: null,
+    loading: false,
+    error: false
   });
 
  

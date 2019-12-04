@@ -31,18 +31,18 @@ const options = {
 function addMarkers(trips) {
   let myicon;
   trips.forEach(trip => {
-    if (trip.data.flag_coords) {
-      myicon = `https://firebasestorage.googleapis.com/v0/b/gpxmagic.appspot.com/o/icons%2F${trip.data.type}.png?alt=media&token=b96d95ad-32ad-4872-a9eb-3c83fa597e7c`;
+    if (trip.flag_coords) {
+      myicon = `https://firebasestorage.googleapis.com/v0/b/gpxmagic.appspot.com/o/icons%2F${trip.type}.png?alt=media&token=b96d95ad-32ad-4872-a9eb-3c83fa597e7c`;
       const flag = {
-        lat: trip.data.flag_coords.lat,
-        lng: trip.data.flag_coords.lng
+        lat: trip.flag_coords.lat,
+        lng: trip.flag_coords.lng
       };
       const marker = new google.maps.Marker({
         position: flag,
         map: map,
         icon: myicon
       });
-      marker.addListener('click', () => navigate(`/trip/${trip.data.slug}`));
+      marker.addListener('click', () => navigate(`/trip/${trip.slug}`));
     }
   });
 }
