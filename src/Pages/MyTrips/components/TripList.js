@@ -6,7 +6,10 @@ function TripList(props) {
   const { state } = useContext(MapContext);
 
   function renderList() {
-    return state.usersTrips.map(trip => {
+    if (!state.userProfile || !state.userProfile.usersTrips){
+      return null
+    }
+    return state.userProfile.usersTrips.map(trip => {
       return (
         <div key={trip.id}>
           <Link to={`/trip/${trip.slug}`}>

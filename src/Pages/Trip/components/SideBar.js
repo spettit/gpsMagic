@@ -21,7 +21,7 @@ function SideBar(props) {
             onClick={() => setTrack(track.id)}
             >{track.name}</li>)}
             </ul>
-            <Link to={`/trip/${state.currentTrip.slug}/newtrack`}>+</Link>
+            <Link to={`/trip/${state.currentTrip.slug}/edit`}>Edit</Link>
         </div>
     );
 }

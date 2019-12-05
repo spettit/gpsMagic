@@ -14,10 +14,10 @@ import Home from "./Pages/Home";
 import Login from "./Pages/LogIn";
 import SignUp from "./Pages/SignUp";
 // import Track from "./Pages/Track";
-import TrackEdit from "./Pages/TrackEdit";
+import EditTrack from "./Pages/EditTrack";
 // import TrackUpload from "./Pages/TrackUpload";
 import Trip from "./Pages/Trip";
-import TripEdit from "./Pages/TripEdit";
+import EditTrip from "./Pages/EditTrip";
 import MyTrips from "./Pages/MyTrips";
 import NewTrip from "./Pages/NewTrip"
 import UserProfile from "./Pages/UserProfile"
@@ -34,7 +34,7 @@ function AppRouter() {
     trips: [],
     types: [],
     currentTrip: {},
-    currentTrack: null,
+    currentTrack: {},
     user: null,
     loading: false,
     error: false
@@ -62,7 +62,7 @@ function AppRouter() {
           <Login path="login" />
           <AddGPX path="addgpx" />
           <Trip path="/trip/:trip" />
-          <TripEdit path="/type/:type/trip/:trip/edit" />
+          {/* <TripEdit path="/type/:type/trip/:trip/edit" /> */}
           {/* <Track path="/trip/:trip/track/:track" /> */}
           <NewTrack path="/trip/:trip/newtrack" />
           {/* <TrackEdit path="/type/:type/trip/:trip/track/:track/edit" /> */}
@@ -70,6 +70,8 @@ function AppRouter() {
           {/* {state.user ? <TrackUpload path="/trip/:trip/upload" /> : <Redirect from="upload" to="login" noThrow/> } */}
           {state.user ? <MyTrips path={`id/${state.user.uid}/mytrips`} /> : <Redirect from="id/*/mytrips" to="login" noThrow/> }
           {state.user ? <NewTrip path={`id/${state.user.uid}/newtrip`} /> : <Redirect from="id/*/newtrip" to="login" noThrow/> }
+          {state.user ? <EditTrip path={`trip/${state.currentTrip.slug}/edit`} /> : <Redirect from="trip/*/edit" to="login" noThrow/> }
+          {state.user ? <EditTrack path={`track/${state.currentTrack.id}/edit`} /> : <Redirect from="track/*/edit" to="login" noThrow/> }
           {state.user ? <UserProfile path={`id/${state.user.uid}/userprofile`} /> : <Redirect from="id/*/userprofile" to="login" noThrow/> }
           {state.user ? <NewEvent path={`trip/${state.currentTrip.slug}/newevent`} /> : <Redirect from="trip/*/newevent" to="login" noThrow/> }
         </Router>
