@@ -71,7 +71,7 @@ function AppRouter() {
           {state.user ? <MyTrips path={`id/${state.user.uid}/mytrips`} /> : <Redirect from="id/*/mytrips" to="login" noThrow/> }
           {state.user ? <NewTrip path={`id/${state.user.uid}/newtrip`} /> : <Redirect from="id/*/newtrip" to="login" noThrow/> }
           {state.user ? <EditTrip path={`trip/${state.currentTrip.slug}/edit`} /> : <Redirect from="trip/*/edit" to="login" noThrow/> }
-          {state.user ? <EditTrack path={`track/${state.currentTrack.id}/edit`} /> : <Redirect from="track/*/edit" to="login" noThrow/> }
+          {state.user ? <EditTrack path={`track/:track/edit`} /> : <Redirect from="track/*/edit" to="login" noThrow/> }
           {state.user ? <UserProfile path={`id/${state.user.uid}/userprofile`} /> : <Redirect from="id/*/userprofile" to="login" noThrow/> }
           {state.user ? <NewEvent path={`trip/${state.currentTrip.slug}/newevent`} /> : <Redirect from="trip/*/newevent" to="login" noThrow/> }
         </Router>
