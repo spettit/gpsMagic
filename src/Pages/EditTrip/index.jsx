@@ -37,6 +37,7 @@ function EditTrip(props) {
               <Link to={`/track/${track.id}/edit`}>{track.name}</Link>
             </li>
           ))}
+        <Link to={`/trip/${state.currentTrip.slug}/newtrack`}>Add Track</Link>
       </ul>
       <button>Set Flag Coords</button>
     </div>
