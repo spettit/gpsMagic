@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import {addNewTrip} from '../../firebase/firestore'
 import MapContext from '../../MapContext'
 import slugify from "slugify";
+import { navigate } from '@reach/router'
 
 
 function NewTrip(props) {
@@ -16,6 +17,7 @@ function NewTrip(props) {
   function handleSubmit(e) {
       e.preventDefault()
       addNewTrip({name: name, uid: state.user.uid, slug: slugify(name)}, dispatch)
+      navigate(`/id/${state.user.uid}/mytrips`)
   }
 
   return (

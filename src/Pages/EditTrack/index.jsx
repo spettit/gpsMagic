@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from "react";
+import { navigate } from "@reach/router";
 import MapContext from "../../MapContext";
 import {
   getCurrentTrackById,
@@ -41,8 +42,8 @@ function EditTrack(props) {
           })}
       </ul>
       <div>
-        <button>Add GPX file</button>
-        <button>Add image file</button>
+        <button onClick={() => navigate("/addgpx")}>Add GPX file</button>
+        <button onClick={() => navigate("/addimage")}>Add image file</button>
         <button>Add youtube movie</button>
         <button>Add external html link</button>
       </div>

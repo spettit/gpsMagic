@@ -141,8 +141,10 @@ let TrackUpload = props => {
     <div>
       <div className="top-spacer" />
       <div>Add a GPX file</div>
+      <input type="text" placeholder="name" />
   <div>{state.currentTrack.id}</div>
       <FilePicker setPoints={setPoints} />
+      <button>Set Time Zone</button>
       <button onClick={sortByTimestamp}>sort</button>
       <button onClick={filterByDistance500}>filter 500</button>
       <button onClick={calcDistances}>distances</button>

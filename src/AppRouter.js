@@ -22,6 +22,7 @@ import MyTrips from "./Pages/MyTrips";
 import NewTrip from "./Pages/NewTrip"
 import UserProfile from "./Pages/UserProfile"
 import AddGPX from "./Pages/AddGPX"
+import AddImage from "./Pages/AddImage"
 import NewTrack from "./Pages/NewTrack"
 
 import NewEvent from "./Pages/NewEvent"
@@ -62,6 +63,7 @@ function AppRouter() {
           <SignUp path="signup" />
           <Login path="login" />
           <AddGPX path="addgpx" />
+          <AddImage path="addimage" />
           <Trip path="/trip/:trip" />
           {/* <TripEdit path="/type/:type/trip/:trip/edit" /> */}
           {/* <Track path="/trip/:trip/track/:track" /> */}

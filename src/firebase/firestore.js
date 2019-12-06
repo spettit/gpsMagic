@@ -109,6 +109,17 @@ export function addImageToTrack(track, file, url) {
     });
 }
 
+export function addCoverImageToTrip(tripId, imageURL, thumbUrl) {
+  firebase
+    .firestore()
+    .collection("trips")
+    .doc(tripId)
+    .set({
+      image: imageURL,
+      thumbnail: thumbUrl
+    }, {merge: true});
+}
+
 export function getImagesByTrack(track, dispatch) {
   let images = [];
   firebase
@@ -171,7 +182,7 @@ export function addNewTrip(data, dispatch) {
   .collection("trips")
   .add(data)
   .then(ref => {
-    dispatch({type: "goToMyTrips"})
+    // dispatch({type: "goToMyTrips"})
   })
 }
 

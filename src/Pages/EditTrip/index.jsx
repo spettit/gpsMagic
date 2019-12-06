@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import MapContext from "../../MapContext";
 import { Link } from "@reach/router";
 import { getTripBySlug } from "../../firebase/firestore";
+import TripImagePicker from "./components/TripImagePicker";
 
 function EditTrip(props) {
   const { state, dispatch } = useContext(MapContext);
@@ -22,6 +23,7 @@ function EditTrip(props) {
       <div>
         <img src={state.currentTrip.thumbnail} width="300px" height="200px" />
         <button>Add or change Cover Image</button>
+        <TripImagePicker />
       </div>
       <div>
         <label>description</label>
@@ -36,6 +38,7 @@ function EditTrip(props) {
             </li>
           ))}
       </ul>
+      <button>Set Flag Coords</button>
     </div>
   );
 }
