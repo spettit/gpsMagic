@@ -12,7 +12,7 @@ function TripList(props) {
     return state.userProfile.usersTrips.map(trip => {
       return (
         <div key={trip.id}>
-          <Link to={`/trip/${trip.slug}`}>
+          <Link to={`/trip/${trip.slug}/edit`}>
             <img
               src={trip.thumbnail}
               height="100"

@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import {uploadMinifiedPoints} from '../../../../firebase/firestore'
+
 
 import moment from "moment";
 import MapContext from "../../../../MapContext";
@@ -71,13 +71,7 @@ function TrackMapContainer(props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => setTheDate(startDate.add(count, "m")), [count]);
 
-  function minifyPoints() {
-     const minipoints = points.filter((point, index, points) => {
-      const divisor = Math.floor(points.length/100)+1
-          return (index%divisor===0)
-    })
-    uploadMinifiedPoints(state.currentTrack.id, minipoints)
-  }
+
 
   return (
     <div style={{ width: "100%" }}>
@@ -94,8 +88,8 @@ function TrackMapContainer(props) {
       </button>
       <button onClick={() => clearInterval(interval)}>Stop</button>
       <div>{theDate.format("DD/MM/YYYY HH:mm:ss")}</div>
-      <EventList />
-      <button onClick={minifyPoints}>minify points</button>
+      {/* <EventList /> */}
+      
     </div>
   );
 }
